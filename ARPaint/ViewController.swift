@@ -79,19 +79,7 @@ class ViewController: UIViewController, MTKViewDelegate, ARSessionDelegate {
             let anchor = ARAnchor(transform: transform)
            
             session.add(anchor: anchor)
-            //let origin = float4(0,0,0,1)
-            
-            //let p1 = simd_mul(transform,origin)
-            //renderer.points.add(point: float3( p1.x, p1.y, p1.z) )
-            
-            //print("p1:\(p1)")
-            
-           // let screenPoint = gesture.location(in: view)
-            
-          
-        
-           
-            
+ 
         }
     }
     
@@ -111,10 +99,8 @@ class ViewController: UIViewController, MTKViewDelegate, ARSessionDelegate {
         
         let plane = simd_mul(planeOrigin,rotation)
         
-        
-        
         if let p = frame.camera.unprojectPoint(screenPoint, ontoPlane: plane, orientation:interfaceOrientation, viewportSize: view.bounds.size) {
-            renderer.points.add(point:p, color:float4(1.0,0.0,0.0,1.0))
+            renderer.points.add(point:p, color:float4(1.0,0.0,0.0,1.0), size:0.01, hardness: 0.1 )
             print("p:\(p)")
         }
     }
@@ -138,45 +124,6 @@ class ViewController: UIViewController, MTKViewDelegate, ARSessionDelegate {
         paint(at: touches)
     }
     
-    
-    func rays(frame:ARFrame, size:CGSize) ->  [simd_float3]?  {
-
-        let origin = float4(0,0,0,1)
-        let cameraPoition4d = simd_mul(frame.camera.transform, origin)
-        let cameraPoition = float3(cameraPoition4d.x,cameraPoition4d.y,cameraPoition4d.z)
-        
-        var translation = matrix_identity_float4x4
-        translation.columns.3.z = -0.2
-        let transform = simd_mul(frame.camera.transform, translation)
-        
-        let xAxis = simd_float3(x: 1,
-                                y: 0,
-                                z: 0)
-        
-        let rotation = float4x4(simd_quatf(angle: 0.5 * .pi ,
-                                           axis: xAxis))
-        
-        let plane = simd_mul(transform,rotation)
-        
-        let screenPoints = [
-                                CGPoint(x: 0.0, y:  0.0),
-                                CGPoint(x: 0.0, y:  size.height),
-                                CGPoint(x: size.width, y:  0.0),
-                                CGPoint(x: size.width, y:  size.height),
-                            ]
-        
-        let spacePoints = screenPoints.compactMap {
-                return frame.camera.unprojectPoint($0, ontoPlane: plane, orientation:interfaceOrientation, viewportSize: size)
-            
-            }
-            
-         let rayDirections = spacePoints.map {
-                return simd_normalize(cameraPoition - $0)
-            }
-        
-        return rayDirections
-    }
-    
     @IBAction func selectMode(_ sender: UISegmentedControl) {
         if let mode = DisplayMode(rawValue:sender.selectedSegmentIndex) {
             renderer.displayMode = mode
@@ -191,12 +138,6 @@ class ViewController: UIViewController, MTKViewDelegate, ARSessionDelegate {
     // Called whenever the view needs to render
     func draw(in view: MTKView) {
         renderer.update()
-        
-        if let frame = session.currentFrame,
-            let anchor = frame.anchors.last {
-           // let t = anchor.transform
-           //print(t)
-        }
     }
     
     // MARK: - ARSessionDelegate

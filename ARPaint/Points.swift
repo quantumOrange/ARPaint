@@ -15,6 +15,8 @@ import MetalKit
 struct PointVertex {
     let position:float3
     let color:float4
+    let size:Float
+    let hardness:Float
 }
 
 class Points: ARMetalDrawable {
@@ -22,8 +24,8 @@ class Points: ARMetalDrawable {
     
     var depthState: MTLDepthStencilState!
     
-    func add(point:float3, color:float4) {
-        vertices.append(PointVertex(position:point,color:color))
+    func add(point:float3, color:float4, size:Float, hardness:Float) {
+        vertices.append(PointVertex(position:point,color:color, size:size, hardness:hardness))
         buildBuffers(device:self.device)
     }
     
@@ -86,20 +88,25 @@ class Points: ARMetalDrawable {
         //   attributes (texture coordinates, normals).  This generally maximizes pipeline efficiency
         vertexDescriptor = MTLVertexDescriptor()
         
+        //position
         vertexDescriptor.attributes[0].format = .float3
         vertexDescriptor.attributes[0].offset = 0
         vertexDescriptor.attributes[0].bufferIndex = 0
         
-        
+        //color
         vertexDescriptor.attributes[1].format = .float4
         vertexDescriptor.attributes[1].offset = MemoryLayout<float3>.stride
         vertexDescriptor.attributes[1].bufferIndex = 0
         
-        /*
-        vertexDescriptor.attributes[2].format = .float2
+        //size
+        vertexDescriptor.attributes[2].format = .float
         vertexDescriptor.attributes[2].offset = MemoryLayout<float3>.stride + MemoryLayout<float4>.stride
         vertexDescriptor.attributes[2].bufferIndex = 0
-        */
+        
+        //hardness
+        vertexDescriptor.attributes[3].format = .float
+        vertexDescriptor.attributes[3].offset =  MemoryLayout<float3>.stride + MemoryLayout<float4>.stride +  MemoryLayout<Float>.stride
+        vertexDescriptor.attributes[3].bufferIndex = 0
         
         vertexDescriptor.layouts[0].stride = MemoryLayout<PointVertex>.stride
  

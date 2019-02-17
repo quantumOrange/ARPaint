@@ -166,8 +166,9 @@ fragment float4 anchorGeometryFragmentLighting(ColorInOut in [[stage_in]],
 
 typedef struct {
     float4 position [[attribute(kVertexAttributePosition)]];
-    //float2 texCoord [[attribute(kVertexAttributeTexcoord)]];
     float4 color [[attribute(1)]];
+    float size [[attribute(2)]];
+    float hardness [[attribute(3)]];
 } PointVertex;
 
 
@@ -175,6 +176,7 @@ typedef struct {
     float4 position [[position]];
     float pointSize [[point_size]];
     float4 color;
+    float hardness;
 } PointInOut;
 
 
@@ -195,7 +197,8 @@ vertex PointInOut pointVertex(PointVertex in [[stage_in]],
     //vertexOut.position = sharedUniforms.projectionMatrix * modelViewMatrix * position;
     vertexOut.position = mvpMatrix * position;
     //vertexOut.position = in;
-    float pointSizeMeters = 0.01;
+    float pointSizeMeters = in.size;
+    vertexOut.hardness = in.hardness;
     
     float pointSizeScreenSpace = pointSizeMeters * sharedUniforms.projectionMatrix[1][1]  / vertexOut.position.w;
     float pointSizeScreenPixels = pointSizeScreenSpace * sharedUniforms.pixelSize.y;
@@ -207,10 +210,10 @@ vertex PointInOut pointVertex(PointVertex in [[stage_in]],
 fragment half4 pointFragment(PointInOut in [[stage_in]],
                                float2 pointCoord [[point_coord]])
 {
-    float dist = length(pointCoord - float2(0.5));
+    float dist = 2.0*length(pointCoord - float2(0.5));
     //float c = smoothstep(0.38, 0.4, dist);
     float4 c = in.color;
-    float alpha = 1.0 - smoothstep(0.48, 0.5, dist);
+    float alpha = 1.0 - smoothstep(in.hardness, 1.0, dist);
     float4 out_color = float4(c.r,c.g,c.b,c.a * alpha);
     
     return half4(out_color);
