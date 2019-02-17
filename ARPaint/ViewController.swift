@@ -39,7 +39,7 @@ class ViewController: UIViewController, MTKViewDelegate, ARSessionDelegate {
             }
             
             // Configure the renderer to draw to the view
-            renderer = Renderer(session: session, metalDevice: view.device!, renderDestination: view,  orientaion: .landscapeRight)
+            renderer = Renderer(session: session, metalDevice: view.device!, renderDestination: view,  orientaion: .portrait)
             //view.drawableSize
             renderer.drawRectResized(size: view.bounds.size)
         }
