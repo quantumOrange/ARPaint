@@ -16,6 +16,11 @@
 		540D4E592216E30700EA4F11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 540D4E572216E30700EA4F11 /* LaunchScreen.storyboard */; };
 		540D4E652216E30700EA4F11 /* ARPaintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E642216E30700EA4F11 /* ARPaintTests.swift */; };
 		540D4E702216E30700EA4F11 /* ARPaintUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E6F2216E30700EA4F11 /* ARPaintUITests.swift */; };
+		540D4E86221731E100EA4F11 /* CapturedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E81221731E000EA4F11 /* CapturedImage.swift */; };
+		540D4E87221731E100EA4F11 /* Cubes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E82221731E100EA4F11 /* Cubes.swift */; };
+		540D4E88221731E100EA4F11 /* ARMetalDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E83221731E100EA4F11 /* ARMetalDrawable.swift */; };
+		540D4E89221731E100EA4F11 /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E84221731E100EA4F11 /* Points.swift */; };
+		540D4E8A221731E100EA4F11 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E85221731E100EA4F11 /* Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +58,11 @@
 		540D4E6B2216E30700EA4F11 /* ARPaintUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARPaintUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		540D4E6F2216E30700EA4F11 /* ARPaintUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARPaintUITests.swift; sourceTree = "<group>"; };
 		540D4E712216E30700EA4F11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		540D4E81221731E000EA4F11 /* CapturedImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturedImage.swift; sourceTree = "<group>"; };
+		540D4E82221731E100EA4F11 /* Cubes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cubes.swift; sourceTree = "<group>"; };
+		540D4E83221731E100EA4F11 /* ARMetalDrawable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARMetalDrawable.swift; sourceTree = "<group>"; };
+		540D4E84221731E100EA4F11 /* Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Points.swift; sourceTree = "<group>"; };
+		540D4E85221731E100EA4F11 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +113,11 @@
 		540D4E482216E30600EA4F11 /* ARPaint */ = {
 			isa = PBXGroup;
 			children = (
+				540D4E83221731E100EA4F11 /* ARMetalDrawable.swift */,
+				540D4E81221731E000EA4F11 /* CapturedImage.swift */,
+				540D4E82221731E100EA4F11 /* Cubes.swift */,
+				540D4E84221731E100EA4F11 /* Points.swift */,
+				540D4E85221731E100EA4F11 /* Util.swift */,
 				540D4E492216E30600EA4F11 /* AppDelegate.swift */,
 				540D4E4B2216E30600EA4F11 /* Shaders.metal */,
 				540D4E4D2216E30600EA4F11 /* ShaderTypes.h */,
@@ -266,9 +281,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				540D4E86221731E100EA4F11 /* CapturedImage.swift in Sources */,
+				540D4E8A221731E100EA4F11 /* Util.swift in Sources */,
 				540D4E4C2216E30600EA4F11 /* Shaders.metal in Sources */,
+				540D4E88221731E100EA4F11 /* ARMetalDrawable.swift in Sources */,
 				540D4E4F2216E30600EA4F11 /* Renderer.swift in Sources */,
+				540D4E89221731E100EA4F11 /* Points.swift in Sources */,
 				540D4E512216E30600EA4F11 /* ViewController.swift in Sources */,
+				540D4E87221731E100EA4F11 /* Cubes.swift in Sources */,
 				540D4E4A2216E30600EA4F11 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,6 +465,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84Y3R5UC5Q;
 				INFOPLIST_FILE = ARPaint/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -463,6 +484,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 84Y3R5UC5Q;
 				INFOPLIST_FILE = ARPaint/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
