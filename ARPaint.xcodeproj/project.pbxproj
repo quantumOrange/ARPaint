@@ -115,16 +115,11 @@
 		540D4E482216E30600EA4F11 /* ARPaint */ = {
 			isa = PBXGroup;
 			children = (
-				540D4E83221731E100EA4F11 /* ARMetalDrawable.swift */,
-				540D4E81221731E000EA4F11 /* CapturedImage.swift */,
 				540D4E95221AC40300EA4F11 /* PaintGestureRecognizer.swift */,
-				540D4E82221731E100EA4F11 /* Cubes.swift */,
-				540D4E84221731E100EA4F11 /* Points.swift */,
 				540D4E85221731E100EA4F11 /* Util.swift */,
 				540D4E492216E30600EA4F11 /* AppDelegate.swift */,
-				540D4E4B2216E30600EA4F11 /* Shaders.metal */,
-				540D4E4D2216E30600EA4F11 /* ShaderTypes.h */,
-				540D4E4E2216E30600EA4F11 /* Renderer.swift */,
+				540D4E81221731E000EA4F11 /* CapturedImage.swift */,
+				540D4EA7221B26AE00EA4F11 /* Metal */,
 				540D4E502216E30600EA4F11 /* ViewController.swift */,
 				540D4E522216E30600EA4F11 /* Main.storyboard */,
 				540D4E552216E30700EA4F11 /* Assets.xcassets */,
@@ -151,6 +146,19 @@
 				540D4E712216E30700EA4F11 /* Info.plist */,
 			);
 			path = ARPaintUITests;
+			sourceTree = "<group>";
+		};
+		540D4EA7221B26AE00EA4F11 /* Metal */ = {
+			isa = PBXGroup;
+			children = (
+				540D4E82221731E100EA4F11 /* Cubes.swift */,
+				540D4E84221731E100EA4F11 /* Points.swift */,
+				540D4E83221731E100EA4F11 /* ARMetalDrawable.swift */,
+				540D4E4B2216E30600EA4F11 /* Shaders.metal */,
+				540D4E4D2216E30600EA4F11 /* ShaderTypes.h */,
+				540D4E4E2216E30600EA4F11 /* Renderer.swift */,
+			);
+			path = Metal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -145,10 +145,7 @@ class Cubes: ARMetalDrawable {
     
     
     func updateBufferStates() {
-        
-      //  sharedUniformBufferAddress = sharedUniformBuffer.contents().advanced(by: sharedUniformBufferOffset)
         anchorUniformBufferAddress = anchorUniformBuffer.contents().advanced(by: anchorUniformBufferOffset)
-        
     }
     
     
