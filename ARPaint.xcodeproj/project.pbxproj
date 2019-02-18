@@ -21,6 +21,7 @@
 		540D4E88221731E100EA4F11 /* ARMetalDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E83221731E100EA4F11 /* ARMetalDrawable.swift */; };
 		540D4E89221731E100EA4F11 /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E84221731E100EA4F11 /* Points.swift */; };
 		540D4E8A221731E100EA4F11 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E85221731E100EA4F11 /* Util.swift */; };
+		540D4E96221AC40300EA4F11 /* PaintGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E95221AC40300EA4F11 /* PaintGestureRecognizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		540D4E83221731E100EA4F11 /* ARMetalDrawable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARMetalDrawable.swift; sourceTree = "<group>"; };
 		540D4E84221731E100EA4F11 /* Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Points.swift; sourceTree = "<group>"; };
 		540D4E85221731E100EA4F11 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		540D4E95221AC40300EA4F11 /* PaintGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintGestureRecognizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			children = (
 				540D4E83221731E100EA4F11 /* ARMetalDrawable.swift */,
 				540D4E81221731E000EA4F11 /* CapturedImage.swift */,
+				540D4E95221AC40300EA4F11 /* PaintGestureRecognizer.swift */,
 				540D4E82221731E100EA4F11 /* Cubes.swift */,
 				540D4E84221731E100EA4F11 /* Points.swift */,
 				540D4E85221731E100EA4F11 /* Util.swift */,
@@ -283,6 +286,7 @@
 			files = (
 				540D4E86221731E100EA4F11 /* CapturedImage.swift in Sources */,
 				540D4E8A221731E100EA4F11 /* Util.swift in Sources */,
+				540D4E96221AC40300EA4F11 /* PaintGestureRecognizer.swift in Sources */,
 				540D4E4C2216E30600EA4F11 /* Shaders.metal in Sources */,
 				540D4E88221731E100EA4F11 /* ARMetalDrawable.swift in Sources */,
 				540D4E4F2216E30600EA4F11 /* Renderer.swift in Sources */,
