@@ -94,7 +94,7 @@ class Renderer {
         self.drawables = [ capturedImage, points]
         
         loadMetal()
-        
+      
     }
     
     func update() {

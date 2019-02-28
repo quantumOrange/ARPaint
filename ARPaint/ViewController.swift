@@ -10,13 +10,29 @@ import UIKit
 import Metal
 import MetalKit
 import ARKit
+//import DCColor
 
 extension MTKView : RenderDestinationProvider {
     
 }
+/*
+extension Color {
+    var simdValue:float4 {
+        let (r,g,b,a) = rgbaComponents
+        return float4(Float(r),Float(g),Float(b),Float(a))
+    }
+}
+*/
 
 class ViewController: UIViewController  {
+    /*
+    @IBOutlet weak var colorControl: DCColorControl!
     
+    @IBAction func colorChanged(_ sender: DCColorControl) {
+        paintGesture.color = sender.color.simdValue
+    }
+    */
+    var paintGesture:PaintGestureRecognizer!
     var session: ARSession!
     var renderer: Renderer!
     
@@ -43,8 +59,14 @@ class ViewController: UIViewController  {
             renderer.drawRectResized(size: view.bounds.size)
         }
         
-        let paintGesture = PaintGestureRecognizer(points: renderer.points, session: session)
+        paintGesture = PaintGestureRecognizer(points: renderer.points, session: session)
         view.addGestureRecognizer(paintGesture)
+        //let color = UIColor.red
+        
+       // paintGesture.color = color.simdValue
+       // colorControl.color = color
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -83,16 +105,13 @@ extension ViewController:ARSessionDelegate {
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
-        
     }
     
     func sessionWasInterrupted(_ session: ARSession) {
         // Inform the user that the session has been interrupted, for example, by presenting an overlay
-        
     }
     
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
-        
     }
 }
