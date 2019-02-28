@@ -10,28 +10,22 @@ import UIKit
 import Metal
 import MetalKit
 import ARKit
-//import DCColor
+import DCColor
 
 extension MTKView : RenderDestinationProvider {
     
 }
-/*
-extension Color {
-    var simdValue:float4 {
-        let (r,g,b,a) = rgbaComponents
-        return float4(Float(r),Float(g),Float(b),Float(a))
-    }
-}
-*/
+
 
 class ViewController: UIViewController  {
-    /*
+    @IBOutlet weak var swatch: DCSwatchButton!
+    
     @IBOutlet weak var colorControl: DCColorControl!
     
     @IBAction func colorChanged(_ sender: DCColorControl) {
-        paintGesture.color = sender.color.simdValue
+        paintGesture.color = sender.color.rgb.simd
     }
-    */
+    
     var paintGesture:PaintGestureRecognizer!
     var session: ARSession!
     var renderer: Renderer!
@@ -61,11 +55,10 @@ class ViewController: UIViewController  {
         
         paintGesture = PaintGestureRecognizer(points: renderer.points, session: session)
         view.addGestureRecognizer(paintGesture)
-        //let color = UIColor.red
         
-       // paintGesture.color = color.simdValue
-       // colorControl.color = color
-        
+        let color = UIColor.red
+        paintGesture.color = color.rgb.simd
+        colorControl.color = color
         
     }
     

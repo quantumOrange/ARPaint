@@ -22,6 +22,9 @@
 		540D4E89221731E100EA4F11 /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E84221731E100EA4F11 /* Points.swift */; };
 		540D4E8A221731E100EA4F11 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E85221731E100EA4F11 /* Util.swift */; };
 		540D4E96221AC40300EA4F11 /* PaintGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E95221AC40300EA4F11 /* PaintGestureRecognizer.swift */; };
+		8B179240FF92175EB1878CDB /* Pods_ARPaint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7565451C197F85DC45883E9 /* Pods_ARPaint.framework */; };
+		FCDB0D370C65B76E9077227E /* Pods_ARPaintUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE2E5E1B7D631FBA5919D099 /* Pods_ARPaintUITests.framework */; };
+		FDBFB0C5A50DC5DDDBEADF19 /* Pods_ARPaintTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF1E450CA719C607B86714B /* Pods_ARPaintTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0B4DF2879CF920A60A546FB1 /* Pods-ARPaintTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARPaintTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARPaintTests/Pods-ARPaintTests.debug.xcconfig"; sourceTree = "<group>"; };
+		17A920D032B5ECE9618D7E73 /* Pods-ARPaint.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARPaint.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARPaint/Pods-ARPaint.release.xcconfig"; sourceTree = "<group>"; };
+		1F1C6848C59FB40C6A5BDBF7 /* Pods-ARPaint.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARPaint.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARPaint/Pods-ARPaint.debug.xcconfig"; sourceTree = "<group>"; };
 		540D4E462216E30600EA4F11 /* ARPaint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARPaint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		540D4E492216E30600EA4F11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		540D4E4B2216E30600EA4F11 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
@@ -78,6 +84,12 @@
 		540D4E84221731E100EA4F11 /* Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Points.swift; sourceTree = "<group>"; };
 		540D4E85221731E100EA4F11 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		540D4E95221AC40300EA4F11 /* PaintGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintGestureRecognizer.swift; sourceTree = "<group>"; };
+		6EE82605BFAFF11CA2977807 /* Pods-ARPaintTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARPaintTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARPaintTests/Pods-ARPaintTests.release.xcconfig"; sourceTree = "<group>"; };
+		6FF1E450CA719C607B86714B /* Pods_ARPaintTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARPaintTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7565451C197F85DC45883E9 /* Pods_ARPaint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARPaint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C940A1C85D0AEB3E7C22F953 /* Pods-ARPaintUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARPaintUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ARPaintUITests/Pods-ARPaintUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		CD0DAA9541B012FEBBD4CB71 /* Pods-ARPaintUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARPaintUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARPaintUITests/Pods-ARPaintUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CE2E5E1B7D631FBA5919D099 /* Pods_ARPaintUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARPaintUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B179240FF92175EB1878CDB /* Pods_ARPaint.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FDBFB0C5A50DC5DDDBEADF19 /* Pods_ARPaintTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,12 +113,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCDB0D370C65B76E9077227E /* Pods_ARPaintUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0026ED8D782B5AA11E5AF312 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1F1C6848C59FB40C6A5BDBF7 /* Pods-ARPaint.debug.xcconfig */,
+				17A920D032B5ECE9618D7E73 /* Pods-ARPaint.release.xcconfig */,
+				0B4DF2879CF920A60A546FB1 /* Pods-ARPaintTests.debug.xcconfig */,
+				6EE82605BFAFF11CA2977807 /* Pods-ARPaintTests.release.xcconfig */,
+				C940A1C85D0AEB3E7C22F953 /* Pods-ARPaintUITests.debug.xcconfig */,
+				CD0DAA9541B012FEBBD4CB71 /* Pods-ARPaintUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		540D4E3D2216E30600EA4F11 = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +140,8 @@
 				540D4E632216E30700EA4F11 /* ARPaintTests */,
 				540D4E6E2216E30700EA4F11 /* ARPaintUITests */,
 				540D4E472216E30600EA4F11 /* Products */,
+				0026ED8D782B5AA11E5AF312 /* Pods */,
+				B9069C100F9F9090475AA438 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -174,6 +204,16 @@
 			path = Metal;
 			sourceTree = "<group>";
 		};
+		B9069C100F9F9090475AA438 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B7565451C197F85DC45883E9 /* Pods_ARPaint.framework */,
+				6FF1E450CA719C607B86714B /* Pods_ARPaintTests.framework */,
+				CE2E5E1B7D631FBA5919D099 /* Pods_ARPaintUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -181,10 +221,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 540D4E742216E30700EA4F11 /* Build configuration list for PBXNativeTarget "ARPaint" */;
 			buildPhases = (
+				EBDC80348AC555AD9C8CCB59 /* [CP] Check Pods Manifest.lock */,
 				540D4E422216E30600EA4F11 /* Sources */,
 				540D4E432216E30600EA4F11 /* Frameworks */,
 				540D4E442216E30600EA4F11 /* Resources */,
 				540D4EC4221B2E5200EA4F11 /* Embed Frameworks */,
+				01690294544188142B1690DB /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -199,6 +241,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 540D4E772216E30700EA4F11 /* Build configuration list for PBXNativeTarget "ARPaintTests" */;
 			buildPhases = (
+				98739A1DC9C73B1BD9C28D45 /* [CP] Check Pods Manifest.lock */,
 				540D4E5C2216E30700EA4F11 /* Sources */,
 				540D4E5D2216E30700EA4F11 /* Frameworks */,
 				540D4E5E2216E30700EA4F11 /* Resources */,
@@ -217,6 +260,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 540D4E7A2216E30700EA4F11 /* Build configuration list for PBXNativeTarget "ARPaintUITests" */;
 			buildPhases = (
+				CBF48399EE3FFA91D7A7221E /* [CP] Check Pods Manifest.lock */,
 				540D4E672216E30700EA4F11 /* Sources */,
 				540D4E682216E30700EA4F11 /* Frameworks */,
 				540D4E692216E30700EA4F11 /* Resources */,
@@ -300,6 +344,103 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		01690294544188142B1690DB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-ARPaint/Pods-ARPaint-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DCColor/DCColor.framework",
+				"${BUILT_PRODUCTS_DIR}/DCCoreGraphics/DCCoreGraphics.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DCColor.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DCCoreGraphics.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ARPaint/Pods-ARPaint-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		98739A1DC9C73B1BD9C28D45 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ARPaintTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CBF48399EE3FFA91D7A7221E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ARPaintUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EBDC80348AC555AD9C8CCB59 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ARPaint-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		540D4E422216E30600EA4F11 /* Sources */ = {
@@ -488,6 +629,7 @@
 		};
 		540D4E752216E30700EA4F11 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F1C6848C59FB40C6A5BDBF7 /* Pods-ARPaint.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -508,6 +650,7 @@
 		};
 		540D4E762216E30700EA4F11 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17A920D032B5ECE9618D7E73 /* Pods-ARPaint.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -528,6 +671,7 @@
 		};
 		540D4E782216E30700EA4F11 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B4DF2879CF920A60A546FB1 /* Pods-ARPaintTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -548,6 +692,7 @@
 		};
 		540D4E792216E30700EA4F11 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6EE82605BFAFF11CA2977807 /* Pods-ARPaintTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -568,6 +713,7 @@
 		};
 		540D4E7B2216E30700EA4F11 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C940A1C85D0AEB3E7C22F953 /* Pods-ARPaintUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -587,6 +733,7 @@
 		};
 		540D4E7C2216E30700EA4F11 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD0DAA9541B012FEBBD4CB71 /* Pods-ARPaintUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
