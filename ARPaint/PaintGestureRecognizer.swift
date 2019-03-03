@@ -9,20 +9,26 @@
 import UIKit
 import ARKit
 
+protocol PaintGestureDelagate {
+    func add(point:float3, color:float4, size:Float, hardness:Float)
+}
+
 class PaintGestureRecognizer: UIGestureRecognizer {
     let orientaion = UIInterfaceOrientation.portrait
-    let points:Points
+    let points:PaintGestureDelagate
     let session:ARSession
     
-    var drawDepth:Float = 0.2
+    var drawDepth:Float = 0.1
+    
     var brushSize:Float = 0.01
     var hardness:Float = 0.5
     var color:float4 = float4(x: 0, y: 0, z: 1, w: 1)
     
     var pointSpacing:Float{
-       return 4.0 * brushSize
+       return 0.5 * brushSize
     }
-    init(points:Points,session:ARSession) {
+    
+    init(points:PaintGestureDelagate,session:ARSession) {
         self.points = points
         self.session = session
         super.init(target: nil, action: nil)
@@ -72,6 +78,7 @@ class PaintGestureRecognizer: UIGestureRecognizer {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let p = spacePoint(touches: touches, session: session) {
+            //print("began:")
              paint(at: p)
              lastDrawPoint = p
         }
@@ -81,11 +88,13 @@ class PaintGestureRecognizer: UIGestureRecognizer {
         if let currentPoint = spacePoint(touches: touches, session: session),
             let lastDraw = lastDrawPoint
             {
+              // print("moved:")
                 let drawPoints = linePoints(start: lastDraw, end: currentPoint, spacing: pointSpacing)
                 
                 drawPoints.forEach(paint)
                 
                 if let last = drawPoints.last {
+                    //print("set last points to \(last)")
                     lastDrawPoint = last
                 }
             }
@@ -95,6 +104,7 @@ class PaintGestureRecognizer: UIGestureRecognizer {
         if let currentPoint = spacePoint(touches: touches, session: session),
             let lastDraw = lastDrawPoint
         {
+            //print("end:")
             linePoints(start: lastDraw, end: currentPoint, spacing: pointSpacing)
                 .forEach(paint)
             
@@ -107,11 +117,15 @@ class PaintGestureRecognizer: UIGestureRecognizer {
         
         let numberOfDrawPoints = Int(floor(dist/spacing))
         
+        let dv = dist/Float(numberOfDrawPoints)
+        
         let v = end - start
         if numberOfDrawPoints > 0 {
             let drawPoints = (1...numberOfDrawPoints)
-                                .map { start +  Float($0) * spacing *  v }
-            print(drawPoints.count)
+                                .map { start +  Float($0) * dv *  v }
+            //print("     Line:\(start) -> \(end)")
+            //print("     points:\(drawPoints.count) dist :\(dist)")
+            
             return drawPoints
         } else {
             return []

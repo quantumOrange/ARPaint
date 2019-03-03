@@ -10,7 +10,7 @@
 		540D4E4A2216E30600EA4F11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E492216E30600EA4F11 /* AppDelegate.swift */; };
 		540D4E4C2216E30600EA4F11 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E4B2216E30600EA4F11 /* Shaders.metal */; };
 		540D4E4F2216E30600EA4F11 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E4E2216E30600EA4F11 /* Renderer.swift */; };
-		540D4E512216E30600EA4F11 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E502216E30600EA4F11 /* ViewController.swift */; };
+		540D4E512216E30600EA4F11 /* PaintViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E502216E30600EA4F11 /* PaintViewController.swift */; };
 		540D4E542216E30600EA4F11 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 540D4E522216E30600EA4F11 /* Main.storyboard */; };
 		540D4E562216E30700EA4F11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 540D4E552216E30700EA4F11 /* Assets.xcassets */; };
 		540D4E592216E30700EA4F11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 540D4E572216E30700EA4F11 /* LaunchScreen.storyboard */; };
@@ -22,6 +22,9 @@
 		540D4E89221731E100EA4F11 /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E84221731E100EA4F11 /* Points.swift */; };
 		540D4E8A221731E100EA4F11 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E85221731E100EA4F11 /* Util.swift */; };
 		540D4E96221AC40300EA4F11 /* PaintGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 540D4E95221AC40300EA4F11 /* PaintGestureRecognizer.swift */; };
+		54F917FB222932B0005E5685 /* PaintViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F917FA222932B0005E5685 /* PaintViewModel.swift */; };
+		54F917FD222985FB005E5685 /* SliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 54F917FC222985FB005E5685 /* SliderView.xib */; };
+		54F917FF22298F3C005E5685 /* ColorControl+rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54F917FE22298F3C005E5685 /* ColorControl+rx.swift */; };
 		8B179240FF92175EB1878CDB /* Pods_ARPaint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7565451C197F85DC45883E9 /* Pods_ARPaint.framework */; };
 		FCDB0D370C65B76E9077227E /* Pods_ARPaintUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE2E5E1B7D631FBA5919D099 /* Pods_ARPaintUITests.framework */; };
 		FDBFB0C5A50DC5DDDBEADF19 /* Pods_ARPaintTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF1E450CA719C607B86714B /* Pods_ARPaintTests.framework */; };
@@ -66,7 +69,7 @@
 		540D4E4B2216E30600EA4F11 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		540D4E4D2216E30600EA4F11 /* ShaderTypes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
 		540D4E4E2216E30600EA4F11 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
-		540D4E502216E30600EA4F11 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		540D4E502216E30600EA4F11 /* PaintViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintViewController.swift; sourceTree = "<group>"; };
 		540D4E532216E30600EA4F11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		540D4E552216E30700EA4F11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		540D4E582216E30700EA4F11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -84,6 +87,9 @@
 		540D4E84221731E100EA4F11 /* Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Points.swift; sourceTree = "<group>"; };
 		540D4E85221731E100EA4F11 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		540D4E95221AC40300EA4F11 /* PaintGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintGestureRecognizer.swift; sourceTree = "<group>"; };
+		54F917FA222932B0005E5685 /* PaintViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintViewModel.swift; sourceTree = "<group>"; };
+		54F917FC222985FB005E5685 /* SliderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderView.xib; sourceTree = "<group>"; };
+		54F917FE22298F3C005E5685 /* ColorControl+rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ColorControl+rx.swift"; sourceTree = "<group>"; };
 		6EE82605BFAFF11CA2977807 /* Pods-ARPaintTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ARPaintTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ARPaintTests/Pods-ARPaintTests.release.xcconfig"; sourceTree = "<group>"; };
 		6FF1E450CA719C607B86714B /* Pods_ARPaintTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARPaintTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7565451C197F85DC45883E9 /* Pods_ARPaint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ARPaint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,16 +164,19 @@
 		540D4E482216E30600EA4F11 /* ARPaint */ = {
 			isa = PBXGroup;
 			children = (
-				540D4E502216E30600EA4F11 /* ViewController.swift */,
+				540D4E502216E30600EA4F11 /* PaintViewController.swift */,
+				54F917FA222932B0005E5685 /* PaintViewModel.swift */,
 				540D4E95221AC40300EA4F11 /* PaintGestureRecognizer.swift */,
 				540D4E85221731E100EA4F11 /* Util.swift */,
 				540D4E492216E30600EA4F11 /* AppDelegate.swift */,
 				540D4EA7221B26AE00EA4F11 /* Metal */,
 				540D4E522216E30600EA4F11 /* Main.storyboard */,
+				54F917FC222985FB005E5685 /* SliderView.xib */,
 				540D4E552216E30700EA4F11 /* Assets.xcassets */,
 				540D4E572216E30700EA4F11 /* LaunchScreen.storyboard */,
 				540D4E5A2216E30700EA4F11 /* Info.plist */,
 				540D4E5B2216E30700EA4F11 /* ARPaint-Bridging-Header.h */,
+				54F917FE22298F3C005E5685 /* ColorControl+rx.swift */,
 			);
 			path = ARPaint;
 			sourceTree = "<group>";
@@ -324,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				540D4E592216E30700EA4F11 /* LaunchScreen.storyboard in Resources */,
+				54F917FD222985FB005E5685 /* SliderView.xib in Resources */,
 				540D4E562216E30700EA4F11 /* Assets.xcassets in Resources */,
 				540D4E542216E30600EA4F11 /* Main.storyboard in Resources */,
 			);
@@ -448,13 +458,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				540D4E86221731E100EA4F11 /* CapturedImage.swift in Sources */,
+				54F917FF22298F3C005E5685 /* ColorControl+rx.swift in Sources */,
 				540D4E8A221731E100EA4F11 /* Util.swift in Sources */,
+				54F917FB222932B0005E5685 /* PaintViewModel.swift in Sources */,
 				540D4E96221AC40300EA4F11 /* PaintGestureRecognizer.swift in Sources */,
 				540D4E4C2216E30600EA4F11 /* Shaders.metal in Sources */,
 				540D4E88221731E100EA4F11 /* ARMetalDrawable.swift in Sources */,
 				540D4E4F2216E30600EA4F11 /* Renderer.swift in Sources */,
 				540D4E89221731E100EA4F11 /* Points.swift in Sources */,
-				540D4E512216E30600EA4F11 /* ViewController.swift in Sources */,
+				540D4E512216E30600EA4F11 /* PaintViewController.swift in Sources */,
 				540D4E87221731E100EA4F11 /* Cubes.swift in Sources */,
 				540D4E4A2216E30600EA4F11 /* AppDelegate.swift in Sources */,
 			);

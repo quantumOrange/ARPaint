@@ -19,7 +19,6 @@ typedef struct {
     float2 texCoord [[attribute(kVertexAttributeTexcoord)]];
 } ImageVertex;
 
-
 typedef struct {
     float4 position [[position]];
     float2 texCoord;

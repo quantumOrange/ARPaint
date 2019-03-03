@@ -19,16 +19,17 @@ struct PointVertex {
     let hardness:Float
 }
 
-class Points: ARMetalDrawable {
+class Points: ARMetalDrawable , PaintGestureDelagate {
     var vertices:[PointVertex] = []
     
     var depthState: MTLDepthStencilState!
     
     func add(point:float3, color:float4, size:Float, hardness:Float) {
+        
         vertices.append(PointVertex(position:point,color:color, size:size, hardness:hardness))
+        
         buildBuffers(device:self.device)
     }
-    
     
     func updateBuffer(frame:ARFrame){
         let v = simd_mul(frame.camera.transform,float4(0,0,0,1))
@@ -41,7 +42,12 @@ class Points: ARMetalDrawable {
             return dist(p.position) > dist(q.position)
         }
         
-        vertices.sort(by: furthestFromCamera)
+      
+           
+        //TODO :- what to do about sorting?
+        //  can sort a max of about 4000 points per frame
+        //  diaabled for time being 
+       //vertices.sort(by: furthestFromCamera)
         
         vertexBuffer?.contents().copyMemory(from: vertices, byteCount: vertices.byteLength)
     }

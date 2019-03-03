@@ -11,24 +11,31 @@ import Metal
 import MetalKit
 import ARKit
 import DCColor
+import RxSwift
+import RxCocoa
 
 extension MTKView : RenderDestinationProvider {
     
 }
 
-
-class ViewController: UIViewController  {
+class PaintViewController: UIViewController  {
+    
+    @IBOutlet weak var metalView: MTKView!
+    
     @IBOutlet weak var swatch: DCSwatchButton!
     
     @IBOutlet weak var colorControl: DCColorControl!
     
     @IBAction func colorChanged(_ sender: DCColorControl) {
         paintGesture.color = sender.color.rgb.simd
+        swatch.color = sender.color
     }
     
     var paintGesture:PaintGestureRecognizer!
     var session: ARSession!
     var renderer: Renderer!
+    
+    let bag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,29 +44,54 @@ class ViewController: UIViewController  {
         session = ARSession()
         session.delegate = self
         
-        // Set the view to use the default device
-        if let view = self.view as? MTKView {
-            view.device = MTLCreateSystemDefaultDevice()
-            view.backgroundColor = UIColor.clear
-            view.delegate = self
-            
-            guard view.device != nil else {
-                print("Metal is not supported on this device")
-                return
-            }
-            
-            // Configure the renderer to draw to the view
-            renderer = Renderer(session: session, metalDevice: view.device!, renderDestination: view,  orientaion: .portrait)
-            renderer.drawRectResized(size: view.bounds.size)
+        metalView.device = MTLCreateSystemDefaultDevice()
+        metalView.backgroundColor = UIColor.clear
+        metalView.delegate = self
+        
+        guard metalView.device != nil else {
+            print("Metal is not supported on this device")
+            return
         }
         
+        // Configure the renderer to draw to the view
+        renderer = Renderer(session: session, metalDevice: metalView.device!, renderDestination: metalView,  orientaion: .portrait)
+        renderer.drawRectResized(size: view.bounds.size)
+       
         paintGesture = PaintGestureRecognizer(points: renderer.points, session: session)
-        view.addGestureRecognizer(paintGesture)
+        metalView.addGestureRecognizer(paintGesture)
         
-        let color = UIColor.red
-        paintGesture.color = color.rgb.simd
-        colorControl.color = color
+        let (colorControlColor,paintColor, colorContolIsVisable) = paintViewModel(
+                                                            colorChanged:colorControl.rx.color.asObservable(),
+                                                            swatchTapped: swatch.rx.tap.asObservable()
+                                                            )
         
+        
+        colorContolIsVisable
+            .subscribe(onNext:
+            { visible in
+                self.colorControl.isHidden = false
+               
+                let animation = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut, animations: {
+                    self.colorControl.alpha = visible ? 1.0 : 0.0
+                })
+                
+                animation.addCompletion({_ in
+                    self.colorControl.isHidden = !visible
+                })
+                
+                animation.startAnimation()
+            })
+            .disposed(by: bag)
+        
+        colorControlColor
+            .bind(to:colorControl.rx.color)
+            .disposed(by: bag)
+        
+        paintColor
+            .subscribe(onNext: {[weak self] color in
+                            self?.paintGesture.color = color
+                        })
+            .disposed(by: bag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -81,7 +113,7 @@ class ViewController: UIViewController  {
    
 }
 
-extension ViewController:MTKViewDelegate {
+extension PaintViewController:MTKViewDelegate {
     // Called whenever view changes orientation or layout is changed
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         renderer.drawRectResized(size: size)
@@ -93,7 +125,7 @@ extension ViewController:MTKViewDelegate {
     }
 }
 
-extension ViewController:ARSessionDelegate {
+extension PaintViewController:ARSessionDelegate {
     // MARK: - ARSessionDelegate
     
     func session(_ session: ARSession, didFailWithError error: Error) {
