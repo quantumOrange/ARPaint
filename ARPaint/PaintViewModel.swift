@@ -12,12 +12,14 @@ import RxSwift
 
 func paintViewModel(
     colorChanged:Observable<Color>,
-   // opacityTapped:Observable<Color>,
-    swatchTapped:Observable<()>
+    //opacityTapped:Observable<Color>,
+    swatchTapped:Observable<()>,
+    drawPoints:Observable<[float3]>
 ) ->
    (contolColor:Observable<Color>,
     paintColor:Observable<float4>,
-   // opacityColor:Observable<Color>,
+    paintPoints:Observable<[PointVertex]>,
+    //opacityColor:Observable<Color>,
     colorContolVisable:Observable<Bool>)
 
 {
@@ -33,8 +35,17 @@ func paintViewModel(
     
     let controlColor = colorChanged
     
+    let paintPoints = Observable.zip(drawPoints, drawPoints.withLatestFrom(colorChanged)) {
+        points , color in
+        points.map { point in
+            PointVertex(position:point,color:color.rgb.simd, size:0.01, hardness:0.95)
+            
+        }
+    }
+    
     return (contolColor:controlColor,
             paintColor:paintColor,
+            paintPoints:paintPoints,
             colorContolVisable:visable)
    
 }

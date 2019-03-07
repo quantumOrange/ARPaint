@@ -27,8 +27,7 @@ class PaintViewController: UIViewController  {
     @IBOutlet weak var colorControl: DCColorControl!
     
     @IBAction func colorChanged(_ sender: DCColorControl) {
-        paintGesture.color = sender.color.rgb.simd
-        swatch.color = sender.color
+        
     }
     
     var paintGesture:PaintGestureRecognizer!
@@ -60,9 +59,14 @@ class PaintViewController: UIViewController  {
         paintGesture = PaintGestureRecognizer(points: renderer.points, session: session)
         metalView.addGestureRecognizer(paintGesture)
         
-        let (colorControlColor,paintColor, colorContolIsVisable) = paintViewModel(
-                                                            colorChanged:colorControl.rx.color.asObservable(),
-                                                            swatchTapped: swatch.rx.tap.asObservable()
+        let colorOb = colorControl.rx.color.asObservable()
+        let swatchTapOb = swatch.rx.tap.asObservable()
+        let drawPointsOb = paintGesture.drawPoints.asObservable()
+        
+        let (colorControlColor,paintColor,paintPoints, colorContolIsVisable) = paintViewModel(
+                                                            colorChanged:colorOb,
+                                                            swatchTapped:swatchTapOb,
+                                                            drawPoints:drawPointsOb
                                                             )
         
         
@@ -86,12 +90,19 @@ class PaintViewController: UIViewController  {
         colorControlColor
             .bind(to:colorControl.rx.color)
             .disposed(by: bag)
-        
+        /*
         paintColor
             .subscribe(onNext: {[weak self] color in
-                            self?.paintGesture.color = color
-                        })
+                    self?.paintGesture.color = color
+                })
             .disposed(by: bag)
+        */
+        paintPoints
+            .subscribe(onNext: {[weak self] verticies in
+                    self?.renderer.points.add(vertices: verticies)
+                })
+            .disposed(by: bag)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

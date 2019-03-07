@@ -25,9 +25,16 @@ class Points: ARMetalDrawable , PaintGestureDelagate {
     var depthState: MTLDepthStencilState!
     
     func add(point:float3, color:float4, size:Float, hardness:Float) {
-        
-        vertices.append(PointVertex(position:point,color:color, size:size, hardness:hardness))
-        
+        let vertex = PointVertex(position:point,color:color, size:size, hardness:hardness)
+        add(vertex: vertex)
+    }
+    
+    func add(vertices:[PointVertex]) {
+        vertices.forEach ( add )
+    }
+    
+    func add(vertex:PointVertex ) {
+        vertices.append(vertex)
         buildBuffers(device:self.device)
     }
     
