@@ -20,13 +20,10 @@ class PaintGestureRecognizer: UIGestureRecognizer {
     let drawPoints:BehaviorRelay<[float3]> = BehaviorRelay(value: [])
     let session:ARSession
     
-    
-    
-    
     var drawDepth:Float = 0.1
     var pointSpacing:Float = 0.005 // ~ 0.5 * brushSize
     
-    init(points:PaintGestureDelagate,session:ARSession) {
+    init(session:ARSession) {
        
         self.session = session
         super.init(target: nil, action: nil)

@@ -12,14 +12,11 @@ import RxSwift
 
 func paintViewModel(
     colorChanged:Observable<Color>,
-    //opacityTapped:Observable<Color>,
     swatchTapped:Observable<()>,
     drawPoints:Observable<[float3]>
 ) ->
    (contolColor:Observable<Color>,
-    paintColor:Observable<float4>,
     paintPoints:Observable<[PointVertex]>,
-    //opacityColor:Observable<Color>,
     colorContolVisable:Observable<Bool>)
 
 {
@@ -27,11 +24,6 @@ func paintViewModel(
     let visable =  swatchTapped
                         .scan(false, accumulator: toggle)
                         .startWith(false)
-    
-    let paintColor = colorChanged.share()
-        .map {
-            $0.rgb.simd
-        }
     
     let controlColor = colorChanged
     
@@ -44,7 +36,6 @@ func paintViewModel(
     }
     
     return (contolColor:controlColor,
-            paintColor:paintColor,
             paintPoints:paintPoints,
             colorContolVisable:visable)
    

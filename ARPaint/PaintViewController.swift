@@ -56,19 +56,14 @@ class PaintViewController: UIViewController  {
         renderer = Renderer(session: session, metalDevice: metalView.device!, renderDestination: metalView,  orientaion: .portrait)
         renderer.drawRectResized(size: view.bounds.size)
        
-        paintGesture = PaintGestureRecognizer(points: renderer.points, session: session)
+        paintGesture = PaintGestureRecognizer( session: session)
         metalView.addGestureRecognizer(paintGesture)
         
-        let colorOb = colorControl.rx.color.asObservable()
-        let swatchTapOb = swatch.rx.tap.asObservable()
-        let drawPointsOb = paintGesture.drawPoints.asObservable()
-        
-        let (colorControlColor,paintColor,paintPoints, colorContolIsVisable) = paintViewModel(
-                                                            colorChanged:colorOb,
-                                                            swatchTapped:swatchTapOb,
-                                                            drawPoints:drawPointsOb
+        let (colorControlColor, paintPoints, colorContolIsVisable) = paintViewModel(
+                                                            colorChanged:colorControl.rx.color.asObservable(),
+                                                            swatchTapped:swatch.rx.tap.asObservable(),
+                                                            drawPoints:paintGesture.drawPoints.asObservable()
                                                             )
-        
         
         colorContolIsVisable
             .subscribe(onNext:
@@ -90,13 +85,7 @@ class PaintViewController: UIViewController  {
         colorControlColor
             .bind(to:colorControl.rx.color)
             .disposed(by: bag)
-        /*
-        paintColor
-            .subscribe(onNext: {[weak self] color in
-                    self?.paintGesture.color = color
-                })
-            .disposed(by: bag)
-        */
+        
         paintPoints
             .subscribe(onNext: {[weak self] verticies in
                     self?.renderer.points.add(vertices: verticies)
