@@ -2,8 +2,8 @@
 //  ARPaint-Bridging-Header.h
 //  ARPaint
 //
-//  Created by David Crooks on 15/02/2019.
-//  Copyright © 2019 David Crooks. All rights reserved.
+//  Created by David Crooks on 30/08/2020.
+//  Copyright © 2020 David Crooks. All rights reserved.
 //
 
 //

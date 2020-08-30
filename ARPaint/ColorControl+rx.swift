@@ -14,7 +14,7 @@ import DCColor
 
 extension Reactive where Base: DCColorControl {
 
-    /// Reactive wrapper for `color` property.
+    // Reactive wrapper for `color` property.
     var color: ControlProperty<Color> {
         return controlProperty(editingEvents: .valueChanged,
                                getter: { colorControl in
@@ -27,3 +27,17 @@ extension Reactive where Base: DCColorControl {
     
 }
 
+extension Reactive where Base: DCSwatchButton {
+
+    // Reactive wrapper for `color` property.
+    var color: ControlProperty<Color> {
+        return controlProperty(editingEvents: .valueChanged,
+                               getter: { colorControl in
+                                    colorControl.color
+                                },
+                               setter: { colorControl, color in
+                                    colorControl.color = color
+                                })
+    }
+    
+}

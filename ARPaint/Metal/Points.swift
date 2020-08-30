@@ -13,8 +13,8 @@ import ARKit
 import MetalKit
 
 struct PointVertex {
-    let position:float3
-    let color:float4
+    let position:SIMD3<Float>
+    let color:SIMD4<Float>
     let size:Float
     let hardness:Float
 }
@@ -24,7 +24,7 @@ class Points: ARMetalDrawable , PaintGestureDelagate {
     
     var depthState: MTLDepthStencilState!
     
-    func add(point:float3, color:float4, size:Float, hardness:Float) {
+    func add(point:SIMD3<Float>, color:SIMD4<Float>, size:Float, hardness:Float) {
         let vertex = PointVertex(position:point,color:color, size:size, hardness:hardness)
         add(vertex: vertex)
     }
@@ -39,30 +39,40 @@ class Points: ARMetalDrawable , PaintGestureDelagate {
     }
     
     func updateBuffer(frame:ARFrame){
-        let v = simd_mul(frame.camera.transform,float4(0,0,0,1))
+        let v = simd_mul(frame.camera.transform,SIMD4<Float>(0,0,0,1))
         
-        func dist(_ p:float3) -> Float {
-            return simd_distance(p,float3(v.x,v.y,v.z))
+        func dist(_ p:SIMD3<Float>) -> Float {
+            return simd_distance(p,SIMD3<Float>(v.x,v.y,v.z))
         }
         
         func furthestFromCamera(_ p:PointVertex,_ q:PointVertex) -> Bool {
             return dist(p.position) > dist(q.position)
         }
         
-      
-           
-        //TODO :- what to do about sorting?
+        //  TODO :- what to do about sorting?
         //  can sort a max of about 4000 points per frame
-        //  diaabled for time being 
-       //vertices.sort(by: furthestFromCamera)
+        //  diaabled for time being
         
+        
+        func fadeVertex(p:PointVertex) -> PointVertex {
+            var c = p.color
+            c.w *= 0.999
+            return PointVertex(position: p.position, color: c, size: p.size, hardness: p.hardness)
+        }
+        
+        vertices = vertices.map (fadeVertex )
+            .filter{ $0.color.w > 0.05 }
+        
+        vertices.sort(by: furthestFromCamera)
+        
+        print(vertices.count)
         vertexBuffer?.contents().copyMemory(from: vertices, byteCount: vertices.byteLength)
     }
     
     var pipelineState: MTLRenderPipelineState?
    
     var vertexBuffer: MTLBuffer?
-    //var indexBuffer: MTLBuffer?
+    // var indexBuffer: MTLBuffer?
     
     private func buildBuffers(device: MTLDevice) {
         
@@ -108,17 +118,17 @@ class Points: ARMetalDrawable , PaintGestureDelagate {
         
         //color
         vertexDescriptor.attributes[1].format = .float4
-        vertexDescriptor.attributes[1].offset = MemoryLayout<float3>.stride
+        vertexDescriptor.attributes[1].offset = MemoryLayout<SIMD3<Float>>.stride
         vertexDescriptor.attributes[1].bufferIndex = 0
         
         //size
         vertexDescriptor.attributes[2].format = .float
-        vertexDescriptor.attributes[2].offset = MemoryLayout<float3>.stride + MemoryLayout<float4>.stride
+        vertexDescriptor.attributes[2].offset = MemoryLayout<SIMD3<Float>>.stride + MemoryLayout<SIMD4<Float>>.stride
         vertexDescriptor.attributes[2].bufferIndex = 0
         
         //hardness
         vertexDescriptor.attributes[3].format = .float
-        vertexDescriptor.attributes[3].offset =  MemoryLayout<float3>.stride + MemoryLayout<float4>.stride +  MemoryLayout<Float>.stride
+        vertexDescriptor.attributes[3].offset =  MemoryLayout<SIMD3<Float>>.stride + MemoryLayout<SIMD4<Float>>.stride +  MemoryLayout<Float>.stride
         vertexDescriptor.attributes[3].bufferIndex = 0
         
         vertexDescriptor.layouts[0].stride = MemoryLayout<PointVertex>.stride
@@ -166,7 +176,6 @@ class Points: ARMetalDrawable , PaintGestureDelagate {
     
     
     func update(frame: ARFrame){
-        //buildBuffers(device: devi)
         updateBuffer(frame: frame)
     }
     

@@ -72,7 +72,7 @@ class Renderer {
      var sharedUniformBufferAddress: UnsafeMutableRawPointer!
     
     let points:Points
-   // let cubes:Cubes
+    // let cubes:Cubes
     let capturedImage:CapturedImage
     
     let drawables:[ARMetalDrawable]
@@ -88,7 +88,7 @@ class Renderer {
         self.renderDestination.colorPixelFormat = .bgra8Unorm
         self.renderDestination.sampleCount = 1
         
-       // self.cubes = Cubes(device:device, destination:renderDestination)
+       
         self.capturedImage = CapturedImage(device:device, destination:renderDestination,orientaion: orientaion)
         self.points = Points(device:device, destination:renderDestination)
         self.drawables = [ capturedImage, points]
@@ -196,10 +196,6 @@ class Renderer {
         }
         
         updateSharedUniforms(frame: currentFrame)
-        /*
-        cubes.update(frame: currentFrame)
-        capturedImage.update(frame: currentFrame)
-        */
         
         drawables.forEach{
             $0.update(frame: currentFrame)
@@ -242,7 +238,7 @@ class Renderer {
         
         
         let drawableSize = renderDestination.drawableSize
-        uniforms.pointee.pixelSize = float2(Float(drawableSize.width),Float(drawableSize.height))
+        uniforms.pointee.pixelSize = SIMD2<Float>(Float(drawableSize.width),Float(drawableSize.height))
         
         var directionalLightDirection : vector_float3 = vector3(0.0, 0.0, -1.0)
         directionalLightDirection = simd_normalize(directionalLightDirection)

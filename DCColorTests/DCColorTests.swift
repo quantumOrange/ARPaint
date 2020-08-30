@@ -1,15 +1,15 @@
 //
-//  ARPaintTests.swift
-//  ARPaintTests
+//  DCColorTests.swift
+//  DCColorTests
 //
 //  Created by David Crooks on 30/08/2020.
 //  Copyright © 2020 David Crooks. All rights reserved.
 //
 
 import XCTest
-@testable import ARPaint
+@testable import DCColor
 
-class ARPaintTests: XCTestCase {
+class DCColorTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

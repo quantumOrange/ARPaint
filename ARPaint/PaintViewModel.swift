@@ -8,12 +8,12 @@
 import DCColor
 import Foundation
 import RxSwift
-//impot simd
+
 
 func paintViewModel(
     colorChanged:Observable<Color>,
     swatchTapped:Observable<()>,
-    drawPoints:Observable<[float3]>
+    drawPoints:Observable<[SIMD3<Float>]>
 ) ->
    (contolColor:Observable<Color>,
     paintPoints:Observable<[PointVertex]>,
@@ -30,7 +30,7 @@ func paintViewModel(
     let paintPoints = Observable.zip(drawPoints, drawPoints.withLatestFrom(colorChanged)) {
         points , color in
         points.map { point in
-            PointVertex(position:point,color:color.rgb.simd, size:0.01, hardness:0.95)
+            PointVertex(position:point,color:color.rgb.simd, size:0.01, hardness:0.1)
             
         }
     }

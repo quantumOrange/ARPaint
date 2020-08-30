@@ -82,8 +82,9 @@ class PaintViewController: UIViewController  {
             })
             .disposed(by: bag)
         
+        
         colorControlColor
-            .bind(to:colorControl.rx.color)
+            .bind(to:swatch.rx.color)
             .disposed(by: bag)
         
         paintPoints

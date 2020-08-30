@@ -11,6 +11,7 @@
 
 // Include header shared between this Metal shader code and C code executing Metal API commands
 #import "ShaderTypes.h"
+#import "Noise.h"
 
 using namespace metal;
 
@@ -187,7 +188,7 @@ vertex PointInOut pointVertex(PointVertex in [[stage_in]],
    
     float4 position = in.position;
     
-   // float4x4 modelMatrix = instanceUniforms[iid].modelMatrix;
+    //float4x4 modelMatrix = instanceUniforms[iid].modelMatrix;
     float4x4 modelViewMatrix = sharedUniforms.viewMatrix ;
     
     // Calculate the position of our vertex in clip space and output for clipping and rasterization
@@ -210,7 +211,6 @@ fragment half4 pointFragment(PointInOut in [[stage_in]],
                                float2 pointCoord [[point_coord]])
 {
     float dist = 2.0*length(pointCoord - float2(0.5));
-    //float c = smoothstep(0.38, 0.4, dist);
     float4 c = in.color;
     float alpha = 1.0 - smoothstep(in.hardness, 1.0, dist);
     float4 out_color = float4(c.r,c.g,c.b,c.a * alpha);

@@ -11,17 +11,17 @@ import ARKit
 import RxCocoa
 
 protocol PaintGestureDelagate {
-    func add(point:float3, color:float4, size:Float, hardness:Float)
+    func add(point:SIMD3<Float>, color:SIMD4<Float>, size:Float, hardness:Float)
 }
 
 class PaintGestureRecognizer: UIGestureRecognizer {
     let orientaion = UIInterfaceOrientation.portrait
    
-    let drawPoints:BehaviorRelay<[float3]> = BehaviorRelay(value: [])
+    let drawPoints:BehaviorRelay<[SIMD3<Float>]> = BehaviorRelay(value: [])
     let session:ARSession
     
     var drawDepth:Float = 0.1
-    var pointSpacing:Float = 0.005 // ~ 0.5 * brushSize
+    var pointSpacing:Float = 0.05 
     
     init(session:ARSession) {
        
@@ -35,7 +35,7 @@ class PaintGestureRecognizer: UIGestureRecognizer {
         return touch.location(in: view)
     }
     
-    func spacePoint(at screenPoint: CGPoint, frame: ARFrame) -> float3? {
+    func spacePoint(at screenPoint: CGPoint, frame: ARFrame) -> SIMD3<Float>? {
         guard let size = view?.bounds.size else { return nil }
         //We want to intersect screen points with the plane infront of the camera
         // Create a transform with a translation of [drawDepth] meters in front of the camera
@@ -45,7 +45,7 @@ class PaintGestureRecognizer: UIGestureRecognizer {
         //This transform represents a plane whose origin is in front of the camera. But it is in the x-z plane....
         let planeOrigin = simd_mul(frame.camera.transform, translation)
         
-        //We want the x-y plane, parralele to the screen, so we need to rotate in the x-axis
+        //We want the x-y plane, parralel to the screen, so we need to rotate in the x-axis
         let xAxis = simd_float3(x: 1,
                                 y: 0,
                                 z: 0)
@@ -59,13 +59,13 @@ class PaintGestureRecognizer: UIGestureRecognizer {
            
     }
     
-    func spacePoint(touches: Set<UITouch>, session:ARSession) -> float3? {
+    func spacePoint(touches: Set<UITouch>, session:ARSession) -> SIMD3<Float>? {
         guard   let screenPoint = screenPoint(for: touches),
             let frame = session.currentFrame else { return nil }
         return spacePoint(at: screenPoint, frame:frame)
     }
     
-    var lastDrawPoint:float3?
+    var lastDrawPoint:SIMD3<Float>?
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let p = spacePoint(touches: touches, session: session) {
@@ -103,7 +103,7 @@ class PaintGestureRecognizer: UIGestureRecognizer {
         }
     }
     
-    func linePoints(start:float3,end:float3,spacing:Float) -> [float3] {
+    func linePoints(start:SIMD3<Float>,end:SIMD3<Float>,spacing:Float) -> [SIMD3<Float>] {
         let dist = distance(start,end)
         
         let numberOfDrawPoints = Int(floor(dist/spacing))
