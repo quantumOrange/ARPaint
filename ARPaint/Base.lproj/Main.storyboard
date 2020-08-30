@@ -28,9 +28,6 @@
                                     <constraint firstAttribute="width" secondItem="8nQ-s3-Qfi" secondAttribute="height" multiplier="1:1" id="3Io-tf-Dyv"/>
                                     <constraint firstAttribute="width" constant="330" id="uWJ-UH-TX2"/>
                                 </constraints>
-                                <connections>
-                                    <action selector="colorChanged:" destination="BV1-FR-VrT" eventType="valueChanged" id="Wwj-b1-kwz"/>
-                                </connections>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="bottom" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="T4R-2n-Pc7">
                                 <rect key="frame" x="20" y="587" width="335" height="60"/>

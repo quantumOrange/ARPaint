@@ -38,6 +38,7 @@ class Points: ARMetalDrawable , PaintGestureDelagate {
         buildBuffers(device:self.device)
     }
     
+
     func updateBuffer(frame:ARFrame){
         let v = simd_mul(frame.camera.transform,SIMD4<Float>(0,0,0,1))
         

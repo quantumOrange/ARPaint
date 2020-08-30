@@ -27,6 +27,7 @@ class PaintViewController: UIViewController  {
     @IBOutlet weak var colorControl: DCColorControl!
     
     @IBAction func clear(_ sender: Any) {
+        renderer.points.vertices = []
     }
     var paintGesture:PaintGestureRecognizer!
     var tapGesture:UITapGestureRecognizer!
