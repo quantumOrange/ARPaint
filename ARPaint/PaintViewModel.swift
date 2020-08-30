@@ -42,7 +42,7 @@ func paintViewModel(
     let paintPoints = Observable.zip(drawPoints, drawPoints.withLatestFrom(colorChanged)) {
         points , color in
         points.map { point in
-            PointVertex(position:point,color:color.rgb.simd, size:0.01, hardness:0.1)
+            PointVertex(position:point,color:color.rgb.simd, size:0.01, hardness:0.8)
             
         }
     }

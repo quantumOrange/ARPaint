@@ -225,6 +225,10 @@ class Renderer {
         uniforms.pointee.viewMatrix = frame.camera.viewMatrix(for: orientaion)
         uniforms.pointee.projectionMatrix = frame.camera.projectionMatrix(for: orientaion, viewportSize: viewportSize, zNear: 0.001, zFar: 1000)
 
+        
+        uniforms.pointee.u = simd_mul(frame.camera.transform,SIMD4<Float>(1.0,0.0,0.0,1.0))
+        uniforms.pointee.v = simd_mul(frame.camera.transform,SIMD4<Float>(0.0,1.0,0.0,1.0))
+        
         // Set up lighting for the scene using the ambient intensity if provided
         var ambientIntensity: Float = 1.0
         

@@ -54,7 +54,7 @@ class PaintGestureRecognizer: UIGestureRecognizer {
                                            axis: xAxis))
         
         let plane = simd_mul(planeOrigin,rotation)
- 
+  
         return frame.camera.unprojectPoint(screenPoint, ontoPlane: plane, orientation:orientaion, viewportSize: size)
            
     }
@@ -85,7 +85,6 @@ class PaintGestureRecognizer: UIGestureRecognizer {
                 drawPoints.accept(points)
                 
                 if let last = points.last {
-                    //print("set last points to \(last)")
                     lastDrawPoint = last
                 }
             }

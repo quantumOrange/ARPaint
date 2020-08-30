@@ -127,6 +127,8 @@ typedef struct {
 typedef struct {
     float4 position [[position]];
     float pointSize [[point_size]];
+    float pointSizeInMeters;
+    float4 positionInMeters;
     float4 color;
     float hardness;
 } PointInOut;
@@ -151,7 +153,8 @@ vertex PointInOut pointVertex(PointVertex in [[stage_in]],
     // vertexOut.position = in;
     float pointSizeMeters = in.size;
     vertexOut.hardness = in.hardness;
-    
+    vertexOut.pointSizeInMeters = pointSizeMeters;
+    vertexOut.positionInMeters = position;
     float pointSizeScreenSpace = pointSizeMeters * sharedUniforms.projectionMatrix[1][1]  / vertexOut.position.w;
     float pointSizeScreenPixels = pointSizeScreenSpace * sharedUniforms.pixelSize.y;
     vertexOut.pointSize =  pointSizeScreenPixels;
@@ -159,12 +162,24 @@ vertex PointInOut pointVertex(PointVertex in [[stage_in]],
     return vertexOut;
 }
 
-fragment half4 pointFragment(PointInOut in [[stage_in]],
+fragment half4 pointFragment(PointInOut in [[stage_in]],constant SharedUniforms &sharedUniforms [[ buffer(kBufferIndexSharedUniforms) ]],
                                float2 pointCoord [[point_coord]])
 {
-    float dist = 2.0*length(pointCoord - float2(0.5));
+    float2 centeredPointCoord = pointCoord - float2(0.5);
+    float dist = 2.0*length(centeredPointCoord);
     float4 c = in.color;
-    float alpha = 1.0 - smoothstep(in.hardness, 1.0, dist);
+    float radialFade = 1.0 - smoothstep(in.hardness, 1.0, dist);
+    
+    float4 u = sharedUniforms.u;
+    float4 v = sharedUniforms.v;
+    
+    float4 spacePoint =  in.positionInMeters + in.pointSizeInMeters*(centeredPointCoord.x*u + centeredPointCoord.y*v);
+    
+    float noiseScale = 100.0;
+    float noiseFactor =  noise(noiseScale*spacePoint.xyz);
+    noiseFactor = mix(1.0,noiseFactor,sqrt(dist));
+    float alpha = noiseFactor*radialFade;
+
     float4 out_color = float4(c.r,c.g,c.b,c.a * alpha);
     
     return half4(out_color);
