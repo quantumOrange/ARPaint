@@ -50,11 +50,6 @@ class Points: ARMetalDrawable , PaintGestureDelagate {
             return dist(p.position) > dist(q.position)
         }
         
-        //  TODO :- what to do about sorting?
-        //  can sort a max of about 4000 points per frame
-        //  diaabled for time being
-        
-        
         func fadeVertex(p:PointVertex) -> PointVertex {
             var c = p.color
             c.w *= 0.999
@@ -177,6 +172,10 @@ class Points: ARMetalDrawable , PaintGestureDelagate {
     
     
     func update(frame: ARFrame){
+
+        let u = simd_mul(frame.camera.transform,SIMD4<Float>(1.0,0.0,0.0,1.0))
+        let v = simd_mul(frame.camera.transform,SIMD4<Float>(0.0,1.0,0.0,1.0))
+                
         updateBuffer(frame: frame)
     }
     
