@@ -10,6 +10,14 @@ import Foundation
 import RxSwift
 
 
+/*
+ Here I'm using a pure function of observables in place of the MVVM view model.
+ See this talk be Stephen Celis at Functional Swift:
+ https://www.youtube.com/watch?v=uTLG_LgjWGA
+ Also this article covers the same idea:
+ https://medium.com/grailed-engineering/modeling-your-view-models-as-functions-65b58525717f
+*/
+
 func paintViewModel(
     colorChanged:Observable<Color>,
     swatchTapped:Observable<()>,
