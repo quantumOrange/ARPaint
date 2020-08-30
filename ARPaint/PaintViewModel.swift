@@ -8,7 +8,7 @@
 import DCColor
 import Foundation
 import RxSwift
-
+import UIKit
 
 /*
  Here I'm using a pure function of observables in place of the MVVM view model.
@@ -21,7 +21,8 @@ import RxSwift
 func paintViewModel(
     colorChanged:Observable<Color>,
     swatchTapped:Observable<()>,
-    drawPoints:Observable<[SIMD3<Float>]>
+    drawPoints:Observable<[SIMD3<Float>]>,
+    viewTap:Observable<UITapGestureRecognizer>
 ) ->
    (contolColor:Observable<Color>,
     paintPoints:Observable<[PointVertex]>,
@@ -29,7 +30,10 @@ func paintViewModel(
 
 {
    
-    let visable =  swatchTapped
+    let voidViewTaps = viewTap.map { _ in return () }
+    let alltaps = Observable.of(voidViewTaps,swatchTapped).merge()
+    
+    let visable =  alltaps
                         .scan(false, accumulator: toggle)
                         .startWith(false)
     

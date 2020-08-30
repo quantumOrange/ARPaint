@@ -58,13 +58,17 @@ class PaintViewController: UIViewController  {
         paintGesture = PaintGestureRecognizer( session: session)
         metalView.addGestureRecognizer(paintGesture)
         
+        tapGesture = UITapGestureRecognizer()
+        tapGesture.numberOfTapsRequired = 1
+        metalView.addGestureRecognizer(tapGesture)
         
         let (colorControlColor, paintPoints, colorContolIsVisable) = paintViewModel(
                                                             colorChanged:colorControl.rx.color.asObservable(),
                                                             swatchTapped:swatch.rx.tap.asObservable(),
-                                                            drawPoints:paintGesture.drawPoints.asObservable()
+                                                            drawPoints:paintGesture.drawPoints.asObservable(),
+                                                            viewTap:tapGesture.rx.event.asObservable()
                                                             )
-        
+       
         colorContolIsVisable
             .subscribe(onNext:
             { visible in
@@ -82,6 +86,7 @@ class PaintViewController: UIViewController  {
                 
                 //only paint when the color wheel is hidden
                 self.paintGesture.isEnabled = !visible
+                self.tapGesture.isEnabled = visible
             })
             .disposed(by: bag)
         
