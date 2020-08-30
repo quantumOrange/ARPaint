@@ -21,7 +21,7 @@ class PaintGestureRecognizer: UIGestureRecognizer {
     let session:ARSession
     
     var drawDepth:Float = 0.1
-    var pointSpacing:Float = 0.05 
+    var pointSpacing:Float = 0.005
     
     init(session:ARSession) {
        
@@ -69,9 +69,9 @@ class PaintGestureRecognizer: UIGestureRecognizer {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let p = spacePoint(touches: touches, session: session) {
-            //print("began:")
+            
             drawPoints.accept([p])
-             lastDrawPoint = p
+            lastDrawPoint = p
         }
     }
     
@@ -79,7 +79,7 @@ class PaintGestureRecognizer: UIGestureRecognizer {
         if let currentPoint = spacePoint(touches: touches, session: session),
             let lastDraw = lastDrawPoint
             {
-              // print("moved:")
+               
                 let points = linePoints(start: lastDraw, end: currentPoint, spacing: pointSpacing)
                 
                 drawPoints.accept(points)
@@ -95,9 +95,9 @@ class PaintGestureRecognizer: UIGestureRecognizer {
         if let currentPoint = spacePoint(touches: touches, session: session),
             let lastDraw = lastDrawPoint
         {
-            //print("end:")
-           let points = linePoints(start: lastDraw, end: currentPoint, spacing: pointSpacing)
-                //.forEach(paint)
+            
+            let points = linePoints(start: lastDraw, end: currentPoint, spacing: pointSpacing)
+
             drawPoints.accept(points)
             lastDrawPoint = nil
         }
@@ -108,16 +108,13 @@ class PaintGestureRecognizer: UIGestureRecognizer {
         
         let numberOfDrawPoints = Int(floor(dist/spacing))
         
-        let dv = dist/Float(numberOfDrawPoints)
-        
-        let v = end - start
         if numberOfDrawPoints > 0 {
-            let drawPoints = (1...numberOfDrawPoints)
-                                .map { start +  Float($0) * dv *  v }
-            //print("     Line:\(start) -> \(end)")
-            //print("     points:\(drawPoints.count) dist :\(dist)")
+            let dv = (end - start) / Float(numberOfDrawPoints)
             
-            return drawPoints
+            return (1...numberOfDrawPoints)
+                                .map { start +  Float($0) * dv  }
+        
+
         } else {
             return []
         }
