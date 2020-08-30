@@ -26,11 +26,10 @@ class PaintViewController: UIViewController  {
     
     @IBOutlet weak var colorControl: DCColorControl!
     
-    @IBAction func colorChanged(_ sender: DCColorControl) {
-        
+    @IBAction func clear(_ sender: Any) {
     }
-    
     var paintGesture:PaintGestureRecognizer!
+    var tapGesture:UITapGestureRecognizer!
     var session: ARSession!
     var renderer: Renderer!
     
@@ -59,6 +58,7 @@ class PaintViewController: UIViewController  {
         paintGesture = PaintGestureRecognizer( session: session)
         metalView.addGestureRecognizer(paintGesture)
         
+        
         let (colorControlColor, paintPoints, colorContolIsVisable) = paintViewModel(
                                                             colorChanged:colorControl.rx.color.asObservable(),
                                                             swatchTapped:swatch.rx.tap.asObservable(),
@@ -79,6 +79,9 @@ class PaintViewController: UIViewController  {
                 })
                 
                 animation.startAnimation()
+                
+                //only paint when the color wheel is hidden
+                self.paintGesture.isEnabled = !visible
             })
             .disposed(by: bag)
         
@@ -92,7 +95,8 @@ class PaintViewController: UIViewController  {
                     self?.renderer.points.add(vertices: verticies)
                 })
             .disposed(by: bag)
-
+        
+        colorControl.color = UIColor.red
     }
     
     override func viewWillAppear(_ animated: Bool) {
