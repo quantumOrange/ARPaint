@@ -36,15 +36,19 @@ float gradientNoise(float3 p )
                           dot( hash( i + float3(1.0,1.0,1.0) ), f - float3(1.0,1.0,1.0) ), u.x), u.y), u.z );
 }
 
-float fractGradientNoise(float3 v ){
+float noise(float3 v,float amplitudeFactor,float scaleFactor, int interations ){
     float value = 0.0;
-    float a = 0.5;
+    float a = amplitudeFactor;
    
-    for(int i=0;i<20;i++){
+    for(int i=0;i<interations;i++){
 
         value +=  a*gradientNoise(v);
-        v *= 2.0;
-        a *= 0.5;
+        v *= scaleFactor;
+        a *= amplitudeFactor;
     }
     return value;
+}
+
+float noise(float3 v) {
+    return noise(v, 0.5,2.0,10);
 }

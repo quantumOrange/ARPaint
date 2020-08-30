@@ -11,6 +11,7 @@
 
 float3 hash( float3 p );
 float gradientNoise(float3 p );
-float fractGradientNoise(float3 v);
+float noise(float3 v,float amplitudeFactor,float scaleFactor, int interations );
+float noise(float3 v);
 
 #endif /* Noise_h */

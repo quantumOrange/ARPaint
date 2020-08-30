@@ -188,15 +188,15 @@ vertex PointInOut pointVertex(PointVertex in [[stage_in]],
    
     float4 position = in.position;
     
-    //float4x4 modelMatrix = instanceUniforms[iid].modelMatrix;
+    // float4x4 modelMatrix = instanceUniforms[iid].modelMatrix;
     float4x4 modelViewMatrix = sharedUniforms.viewMatrix ;
     
     // Calculate the position of our vertex in clip space and output for clipping and rasterization
     float4x4 mvpMatrix = sharedUniforms.projectionMatrix * modelViewMatrix;
     
-    //vertexOut.position = sharedUniforms.projectionMatrix * modelViewMatrix * position;
+    // vertexOut.position = sharedUniforms.projectionMatrix * modelViewMatrix * position;
     vertexOut.position = mvpMatrix * position;
-    //vertexOut.position = in;
+    // vertexOut.position = in;
     float pointSizeMeters = in.size;
     vertexOut.hardness = in.hardness;
     
