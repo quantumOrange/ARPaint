@@ -117,8 +117,14 @@ extension CGContext {
     
     ///Draws a color circle of all colors of a given brightness, hue varying around the circumferance and  saturation varying radially
     func drawColorCircle(center:CGPoint,radius:CGFloat, brightness:CGFloat){
-       
+        let side = radius*2.0
+        addEllipse(in:CGRect.square(center: center, with:side))
+        setFillColor(UIColor.gray.cgColor)
+        drawPath(using: .fill)
+        
+        
         let colorSpace = CGColorSpaceCreateDeviceRGB()
+        
         
         //generate a set of pairs of angles and color at 360 points around the color wheel
         let colorsAngles = (0..<360).map{ CGFloat($0)/360.0 }.map{ ( UIColor(hue: $0, saturation: 1.0, brightness:brightness, alpha: 1.0), $0*2.0*CGFloat.pi)}
