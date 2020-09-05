@@ -14,6 +14,13 @@ public struct RGBColor {
     public let green:CGFloat
     public let blue:CGFloat
     public let alpha:CGFloat
+    
+    public init(red:CGFloat = 0.0,green:CGFloat = 0.0,blue:CGFloat = 0.0,alpha:CGFloat = 1.0) {
+        self.red = red
+        self.green = green
+        self.blue = blue
+        self.alpha = alpha
+    }
 }
 
 extension RGBColor:Color {

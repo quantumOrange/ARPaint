@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5404E94F24FC086F003DDDB8 /* CapturedImage.metal in Sources */ = {isa = PBXBuildFile; fileRef = 5404E94E24FC086F003DDDB8 /* CapturedImage.metal */; };
+		5443683F250257C10088C0E7 /* PaintModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5443683E250257C10088C0E7 /* PaintModel.swift */; };
+		5497B2FB2503B4E800ED910B /* SlidersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5497B2FA2503B4E800ED910B /* SlidersViewController.swift */; };
 		54BE6B5224FBAFF2005D9D82 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BE6B5124FBAFF2005D9D82 /* AppDelegate.swift */; };
 		54BE6B5C24FBAFF2005D9D82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 54BE6B5A24FBAFF2005D9D82 /* Main.storyboard */; };
 		54BE6B5E24FBAFF4005D9D82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 54BE6B5D24FBAFF4005D9D82 /* Assets.xcassets */; };
@@ -96,6 +98,8 @@
 /* Begin PBXFileReference section */
 		5404E94E24FC086F003DDDB8 /* CapturedImage.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = CapturedImage.metal; sourceTree = "<group>"; };
 		5404E95024FC08D8003DDDB8 /* CapturedImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CapturedImage.h; sourceTree = "<group>"; };
+		5443683E250257C10088C0E7 /* PaintModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaintModel.swift; sourceTree = "<group>"; };
+		5497B2FA2503B4E800ED910B /* SlidersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidersViewController.swift; sourceTree = "<group>"; };
 		54BE6B4E24FBAFF2005D9D82 /* ARPaint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARPaint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		54BE6B5124FBAFF2005D9D82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		54BE6B5B24FBAFF2005D9D82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -182,11 +186,11 @@
 			isa = PBXGroup;
 			children = (
 				54BE6BC424FBB6F1005D9D82 /* Noise.metal */,
+				54BE6BC524FBB6F1005D9D82 /* Noise.h */,
 				54BE6BC724FBB6F1005D9D82 /* Shaders.metal */,
 				5404E94E24FC086F003DDDB8 /* CapturedImage.metal */,
 				5404E95024FC08D8003DDDB8 /* CapturedImage.h */,
 				54BE6BCA24FBB6F1005D9D82 /* ShaderTypes.h */,
-				54BE6BC524FBB6F1005D9D82 /* Noise.h */,
 			);
 			path = Shaders;
 			sourceTree = "<group>";
@@ -220,6 +224,8 @@
 				54BE6BB924FBB6CF005D9D82 /* ColorControl+rx.swift */,
 				54BE6BBB24FBB6CF005D9D82 /* PaintGestureRecognizer.swift */,
 				54BE6BBA24FBB6CF005D9D82 /* PaintViewController.swift */,
+				5497B2FA2503B4E800ED910B /* SlidersViewController.swift */,
+				5443683E250257C10088C0E7 /* PaintModel.swift */,
 				54BE6BBC24FBB6CF005D9D82 /* PaintViewModel.swift */,
 				54BE6BBD24FBB6CF005D9D82 /* Util.swift */,
 				54BE6BC324FBB6F1005D9D82 /* Metal */,
@@ -478,6 +484,8 @@
 				54BE6BBF24FBB6CF005D9D82 /* PaintViewController.swift in Sources */,
 				54BE6BC024FBB6CF005D9D82 /* PaintGestureRecognizer.swift in Sources */,
 				54BE6BCF24FBB6F2005D9D82 /* Shaders.metal in Sources */,
+				5443683F250257C10088C0E7 /* PaintModel.swift in Sources */,
+				5497B2FB2503B4E800ED910B /* SlidersViewController.swift in Sources */,
 				54BE6B5224FBAFF2005D9D82 /* AppDelegate.swift in Sources */,
 				54BE6BD024FBB6F2005D9D82 /* Points.swift in Sources */,
 				54BE6BC124FBB6CF005D9D82 /* PaintViewModel.swift in Sources */,

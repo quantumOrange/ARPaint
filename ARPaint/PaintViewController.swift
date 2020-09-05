@@ -26,9 +26,12 @@ class PaintViewController: UIViewController  {
     
     @IBOutlet weak var colorControl: DCColorControl!
     
-    @IBAction func clear(_ sender: Any) {
-        renderer.points.vertices = []
-    }
+   // @IBOutlet weak var sliders: UIButton!
+    
+    @IBOutlet weak var clear: UIButton!
+    
+    var model:PaintModel = PaintModel()
+    
     var paintGesture:PaintGestureRecognizer!
     var tapGesture:UITapGestureRecognizer!
     var session: ARSession!
@@ -67,9 +70,24 @@ class PaintViewController: UIViewController  {
                                                             colorChanged:colorControl.rx.color.asObservable(),
                                                             swatchTapped:swatch.rx.tap.asObservable(),
                                                             drawPoints:paintGesture.drawPoints.asObservable(),
-                                                            viewTap:tapGesture.rx.event.asObservable()
+                                                            viewTap:tapGesture.rx.event.asObservable(),
+                                                            model:model
                                                             )
-       
+        
+        clear.rx
+            .tap
+            .asObservable()
+            .subscribe(onNext:{ _ in
+                self.renderer.points.vertices = []
+            })
+            .disposed(by: bag)
+        
+        colorControlColor
+            .bind(to: model.color)
+            .disposed(by: bag)
+        
+        //
+        
         colorContolIsVisable
             .subscribe(onNext:
             { visible in
@@ -91,9 +109,12 @@ class PaintViewController: UIViewController  {
             })
             .disposed(by: bag)
         
-        
-        colorControlColor
+        model.color
             .bind(to:swatch.rx.color)
+            .disposed(by: bag)
+        
+        model.color
+            .bind(to:colorControl.rx.color)
             .disposed(by: bag)
         
         paintPoints
@@ -102,7 +123,7 @@ class PaintViewController: UIViewController  {
                 })
             .disposed(by: bag)
         
-        colorControl.color = UIColor.red
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,6 +141,11 @@ class PaintViewController: UIViewController  {
         
         // Pause the view's session
         session.pause()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let sliderVC = segue.destination as? SlidersViewController else { return }
+        sliderVC.model = model
     }
    
 }

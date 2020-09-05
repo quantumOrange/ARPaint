@@ -22,7 +22,8 @@ func paintViewModel(
     colorChanged:Observable<Color>,
     swatchTapped:Observable<()>,
     drawPoints:Observable<[SIMD3<Float>]>,
-    viewTap:Observable<UITapGestureRecognizer>
+    viewTap:Observable<UITapGestureRecognizer>,
+    model:PaintModel
 ) ->
    (contolColor:Observable<Color>,
     paintPoints:Observable<[PointVertex]>,
@@ -39,10 +40,21 @@ func paintViewModel(
     
     let controlColor = colorChanged
     
-    let paintPoints = Observable.zip(drawPoints, drawPoints.withLatestFrom(colorChanged)) {
-        points , color in
+    let paintPoints:Observable<[PointVertex]> = Observable.zip(drawPoints,
+                                     drawPoints.withLatestFrom(colorChanged),
+                                     drawPoints.withLatestFrom(model.hardness),
+                                     drawPoints.withLatestFrom(model.scatter),
+                                     drawPoints.withLatestFrom(model.size)) {
+        points , color , hardness, scatter, size in
         points.map { point in
-            PointVertex(position:point,color:color.rgb.simd, size:0.01, hardness:0.8)
+            
+            var newPoint = point
+            
+            if(scatter>0.01){
+                newPoint += scatter*size*randomVector()
+            }
+            
+            return PointVertex(position:point,color:color.rgb.simd, size:size, hardness:hardness)
             
         }
     }
@@ -55,4 +67,17 @@ func paintViewModel(
 
 func toggle(_ value:Bool,_ void:()) -> Bool {
     return !value
+}
+
+
+func randomVector() -> SIMD3<Float> {
+    let r = Float.random(in: 0...1)
+    let theta = Float.random(in: 0...2*Float.pi)
+    let phi = Float.random(in: 0...2*Float.pi)
+    
+    return SIMD3<Float>(
+                            r*sin(theta)*cos(phi),
+                             r*sin(theta)*sin(phi),
+                              r*cos(theta)
+                        )
 }
