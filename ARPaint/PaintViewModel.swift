@@ -54,7 +54,7 @@ func paintViewModel(
                 newPoint += scatter*size*randomVector()
             }
             
-            return PointVertex(position:point,color:color.rgb.simd, size:size, hardness:hardness)
+            return PointVertex(position:newPoint,color:color.rgb.simd, size:size, hardness:hardness)
             
         }
     }

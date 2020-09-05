@@ -44,7 +44,6 @@
 		54BE6BCE24FBB6F2005D9D82 /* ARMetalDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BE6BC624FBB6F1005D9D82 /* ARMetalDrawable.swift */; };
 		54BE6BCF24FBB6F2005D9D82 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 54BE6BC724FBB6F1005D9D82 /* Shaders.metal */; };
 		54BE6BD024FBB6F2005D9D82 /* Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BE6BC824FBB6F1005D9D82 /* Points.swift */; };
-		54BE6BD124FBB6F2005D9D82 /* Cubes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BE6BC924FBB6F1005D9D82 /* Cubes.swift */; };
 		54BE6BD224FBB6F2005D9D82 /* CapturedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BE6BCB24FBB6F1005D9D82 /* CapturedImage.swift */; };
 		54BE6BD324FBB6F2005D9D82 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BE6BCC24FBB6F1005D9D82 /* Renderer.swift */; };
 		54BE6BD524FBB87C005D9D82 /* RGBColor+simd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54BE6BD424FBB87C005D9D82 /* RGBColor+simd.swift */; };
@@ -139,7 +138,6 @@
 		54BE6BC624FBB6F1005D9D82 /* ARMetalDrawable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARMetalDrawable.swift; sourceTree = "<group>"; };
 		54BE6BC724FBB6F1005D9D82 /* Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 		54BE6BC824FBB6F1005D9D82 /* Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Points.swift; sourceTree = "<group>"; };
-		54BE6BC924FBB6F1005D9D82 /* Cubes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cubes.swift; sourceTree = "<group>"; };
 		54BE6BCA24FBB6F1005D9D82 /* ShaderTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShaderTypes.h; sourceTree = "<group>"; };
 		54BE6BCB24FBB6F1005D9D82 /* CapturedImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CapturedImage.swift; sourceTree = "<group>"; };
 		54BE6BCC24FBB6F1005D9D82 /* Renderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
@@ -285,7 +283,6 @@
 				5404E94D24FC07DC003DDDB8 /* Shaders */,
 				54BE6BC624FBB6F1005D9D82 /* ARMetalDrawable.swift */,
 				54BE6BC824FBB6F1005D9D82 /* Points.swift */,
-				54BE6BC924FBB6F1005D9D82 /* Cubes.swift */,
 				54BE6BCB24FBB6F1005D9D82 /* CapturedImage.swift */,
 				54BE6BCC24FBB6F1005D9D82 /* Renderer.swift */,
 			);
@@ -476,7 +473,6 @@
 			files = (
 				54BE6BCE24FBB6F2005D9D82 /* ARMetalDrawable.swift in Sources */,
 				54BE6BD224FBB6F2005D9D82 /* CapturedImage.swift in Sources */,
-				54BE6BD124FBB6F2005D9D82 /* Cubes.swift in Sources */,
 				54BE6BBE24FBB6CF005D9D82 /* ColorControl+rx.swift in Sources */,
 				54BE6BC224FBB6CF005D9D82 /* Util.swift in Sources */,
 				54BE6BD324FBB6F2005D9D82 /* Renderer.swift in Sources */,

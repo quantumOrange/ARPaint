@@ -26,8 +26,6 @@ class PaintViewController: UIViewController  {
     
     @IBOutlet weak var colorControl: DCColorControl!
     
-   // @IBOutlet weak var sliders: UIButton!
-    
     @IBOutlet weak var clear: UIButton!
     
     var model:PaintModel = PaintModel()
@@ -86,33 +84,24 @@ class PaintViewController: UIViewController  {
             .bind(to: model.color)
             .disposed(by: bag)
         
-        
-        model.hardness.subscribe(onNext:
-        { h in
-           print("hardness: \(h)")
-        })
-        .disposed(by: bag)
-        
-        //
-        
         colorContolIsVisable
             .subscribe(onNext:
-            { visible in
-                self.colorControl.isHidden = false
+            { [weak self] visible in
+                self?.colorControl.isHidden = false
                
                 let animation = UIViewPropertyAnimator(duration: 0.3, curve: .easeInOut, animations: {
-                    self.colorControl.alpha = visible ? 1.0 : 0.0
+                    self?.colorControl.alpha = visible ? 1.0 : 0.0
                 })
                 
                 animation.addCompletion({_ in
-                    self.colorControl.isHidden = !visible
+                    self?.colorControl.isHidden = !visible
                 })
                 
                 animation.startAnimation()
                 
                 //only paint when the color wheel is hidden
-                self.paintGesture.isEnabled = !visible
-                self.tapGesture.isEnabled = visible
+                self?.paintGesture.isEnabled = !visible
+                self?.tapGesture.isEnabled = visible
             })
             .disposed(by: bag)
         
@@ -132,8 +121,8 @@ class PaintViewController: UIViewController  {
         
         model
             .noise
-            .subscribe(onNext:{ noiseIsOn in
-                self.renderer.renderNoise = noiseIsOn
+            .subscribe(onNext:{[weak self] noiseIsOn in
+                self?.renderer.renderNoise = noiseIsOn
             })
             .disposed(by: bag)
     }

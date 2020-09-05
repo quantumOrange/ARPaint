@@ -70,6 +70,13 @@ class SlidersViewController: UIViewController {
             .bind(to: model.scatter)
             .disposed(by: bag)
         
+        size
+            .rx
+            .value
+            .asObservable()
+            .bind(to: model.size)
+            .disposed(by: bag)
+        
         noise
             .rx
             .isOn
