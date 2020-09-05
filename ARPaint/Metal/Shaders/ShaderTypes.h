@@ -12,6 +12,10 @@
 #ifndef ShaderTypes_h
 #define ShaderTypes_h
 
+#ifndef __METAL_VERSION__
+#import <Foundation/Foundation.h>
+#endif
+
 #include <simd/simd.h>
 
 
@@ -49,7 +53,7 @@ typedef struct {
     
     vector_float4 u;
     vector_float4 v;
-    
+    bool noise;
     vector_float2  pixelSize;
     // Lighting Properties
     vector_float3 ambientLightColor;

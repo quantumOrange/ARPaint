@@ -19,6 +19,8 @@ class SlidersViewController: UIViewController {
     
     @IBOutlet weak var size: UISlider!
     
+    @IBOutlet weak var noise: UISwitch!
+    
     let bag = DisposeBag()
     
     var model:PaintModel!
@@ -26,6 +28,27 @@ class SlidersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        model
+            .hardness
+            .bind(to: hardness.rx.value)
+            .disposed(by: bag)
+
+        model
+            .scatter
+            .bind(to: scatter.rx.value)
+            .disposed(by: bag)
+
+        model
+            .size
+            .bind(to:size.rx.value)
+            .disposed(by: bag)
+
+        model
+            .noise
+            .bind(to:noise.rx.isOn)
+            .disposed(by: bag)
+        
         dismiss
             .rx
             .tap
@@ -47,22 +70,13 @@ class SlidersViewController: UIViewController {
             .bind(to: model.scatter)
             .disposed(by: bag)
         
-        model.hardness.bind(to: hardness.rx.value)
-        model.scatter.bind(to: scatter.rx.value)
-        model.size.bind(to:size.rx.value)
+        noise
+            .rx
+            .isOn
+            .asObservable()
+            .bind(to: model.noise)
+            .disposed(by: bag)
         
-        // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -86,6 +86,13 @@ class PaintViewController: UIViewController  {
             .bind(to: model.color)
             .disposed(by: bag)
         
+        
+        model.hardness.subscribe(onNext:
+        { h in
+           print("hardness: \(h)")
+        })
+        .disposed(by: bag)
+        
         //
         
         colorContolIsVisable
@@ -123,7 +130,12 @@ class PaintViewController: UIViewController  {
                 })
             .disposed(by: bag)
         
-        
+        model
+            .noise
+            .subscribe(onNext:{ noiseIsOn in
+                self.renderer.renderNoise = noiseIsOn
+            })
+            .disposed(by: bag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -158,6 +170,7 @@ extension PaintViewController:MTKViewDelegate {
     
     // Called whenever the view needs to render
     func draw(in view: MTKView) {
+        
         renderer.update()
     }
 }

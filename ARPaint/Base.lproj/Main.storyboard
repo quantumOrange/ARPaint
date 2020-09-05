@@ -90,7 +90,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="ybK-2S-7UK">
-                                <rect key="frame" x="20" y="210.5" width="335" height="226.5"/>
+                                <rect key="frame" x="20" y="155" width="335" height="337.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hardness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Nt-dM-Q5U" userLabel="Hardness">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="20.5"/>
@@ -119,6 +119,21 @@
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.01" minValue="0.0050000000000000001" maxValue="0.029999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="Tk5-ul-wzM" userLabel="Size">
                                         <rect key="frame" x="-2" y="196.5" width="339" height="31"/>
                                     </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Noise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRj-Q7-5Xf" userLabel="noise">
+                                        <rect key="frame" x="0.0" y="241.5" width="335" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Noise may effect rendering performance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gav-q6-pCa">
+                                        <rect key="frame" x="0.0" y="277" width="335" height="14.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YZ6-lK-Lvo">
+                                        <rect key="frame" x="0.0" y="306.5" width="337" height="31"/>
+                                    </switch>
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EN0-Rq-Xm7">
@@ -139,6 +154,7 @@
                     <connections>
                         <outlet property="dismiss" destination="EN0-Rq-Xm7" id="k6Z-rt-oEL"/>
                         <outlet property="hardness" destination="HMF-Iw-kvp" id="gR9-Ig-3sl"/>
+                        <outlet property="noise" destination="YZ6-lK-Lvo" id="ccI-72-mGR"/>
                         <outlet property="scatter" destination="AeP-gM-0vx" id="gA1-cW-U00"/>
                         <outlet property="size" destination="Tk5-ul-wzM" id="Hjj-0r-Pm6"/>
                     </connections>

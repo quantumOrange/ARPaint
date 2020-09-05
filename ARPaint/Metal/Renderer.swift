@@ -215,7 +215,7 @@ class Renderer {
     // Flag for viewport size changes
     //var viewportSizeDidChange: Bool = false
     
-    
+    var renderNoise = false
     
     func updateSharedUniforms(frame: ARFrame) {
         // Update the shared uniforms of the frame
@@ -225,10 +225,10 @@ class Renderer {
         uniforms.pointee.viewMatrix = frame.camera.viewMatrix(for: orientaion)
         uniforms.pointee.projectionMatrix = frame.camera.projectionMatrix(for: orientaion, viewportSize: viewportSize, zNear: 0.001, zFar: 1000)
 
-        
+        // u and v are used to render noise. Each point is rendered as a little sqaure parallell to the screen, so u and v help us find where each pixel is in space. 
         uniforms.pointee.u = simd_mul(frame.camera.transform,SIMD4<Float>(1.0,0.0,0.0,1.0))
         uniforms.pointee.v = simd_mul(frame.camera.transform,SIMD4<Float>(0.0,1.0,0.0,1.0))
-        
+        uniforms.pointee.noise = renderNoise;
         // Set up lighting for the scene using the ambient intensity if provided
         var ambientIntensity: Float = 1.0
         

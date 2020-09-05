@@ -175,9 +175,14 @@ fragment half4 pointFragment(PointInOut in [[stage_in]],constant SharedUniforms 
     
     float4 spacePoint =  in.positionInMeters + in.pointSizeInMeters*(centeredPointCoord.x*u + centeredPointCoord.y*v);
     
-    float noiseScale = 100.0;
-    float noiseFactor =  noise(noiseScale*spacePoint.xyz);
-    noiseFactor = mix(1.0,noiseFactor,sqrt(dist));
+    float noiseFactor = 1.0;
+    
+    if(sharedUniforms.noise){
+        float noiseScale = 100.0;
+        float noiseFactor =  noise(noiseScale*spacePoint.xyz);
+        noiseFactor = mix(1.0,noiseFactor,sqrt(dist));
+    }
+    
     float alpha = noiseFactor*radialFade;
 
     float4 out_color = float4(c.r,c.g,c.b,c.a * alpha);

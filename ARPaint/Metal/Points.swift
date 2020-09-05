@@ -61,7 +61,7 @@ class Points: ARMetalDrawable , PaintGestureDelagate {
         
         vertices.sort(by: furthestFromCamera)
         
-        print(vertices.count)
+        //print(vertices.count)
         vertexBuffer?.contents().copyMemory(from: vertices, byteCount: vertices.byteLength)
     }
     
