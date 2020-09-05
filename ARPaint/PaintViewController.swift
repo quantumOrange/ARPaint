@@ -28,6 +28,8 @@ class PaintViewController: UIViewController  {
     
     @IBOutlet weak var clear: UIButton!
     
+    @IBOutlet weak var sliders: UIButton!
+    
     var model:PaintModel = PaintModel()
     
     var paintGesture:PaintGestureRecognizer!
@@ -125,6 +127,10 @@ class PaintViewController: UIViewController  {
                 self?.renderer.renderNoise = noiseIsOn
             })
             .disposed(by: bag)
+        
+        
+        clear.layer.cornerRadius = 10
+        sliders.layer.cornerRadius = 10
     }
     
     override func viewWillAppear(_ animated: Bool) {
