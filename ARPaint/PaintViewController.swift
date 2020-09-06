@@ -20,6 +20,8 @@ extension MTKView : RenderDestinationProvider {
 
 class PaintViewController: UIViewController  {
     
+    
+    
     @IBOutlet weak var metalView: MTKView!
     
     @IBOutlet weak var swatch: DCSwatchButton!
@@ -117,7 +119,9 @@ class PaintViewController: UIViewController  {
         
         paintPoints
             .subscribe(onNext: {[weak self] verticies in
-                    self?.renderer.points.add(vertices: verticies)
+                    self?.renderer.points.add(verticies)
+                
+                //self?.renderer.points.dr
                 })
             .disposed(by: bag)
         

@@ -19,22 +19,20 @@ struct PointVertex {
     let hardness:Float
 }
 
-class Points: ARMetalDrawable , PaintGestureDelagate {
+class Points: ARMetalDrawable  {
+    let maxPoints = 3000
+    
     var vertices:[PointVertex] = []
     
     var depthState: MTLDepthStencilState!
-    
-    func add(point:SIMD3<Float>, color:SIMD4<Float>, size:Float, hardness:Float) {
-        let vertex = PointVertex(position:point,color:color, size:size, hardness:hardness)
-        add(vertex: vertex)
-    }
-    
-    func add(vertices:[PointVertex]) {
-        vertices.forEach ( add )
-    }
-    
-    func add(vertex:PointVertex ) {
-        vertices.append(vertex)
+   
+    func add(_ newVertices:[PointVertex]) {
+        newVertices.forEach { vertices.append($0) }
+        
+        let excessPoints = vertices.count - maxPoints
+        if excessPoints > 0 {
+            vertices = Array(vertices.dropFirst(excessPoints))
+        }
         buildBuffers(device:self.device)
     }
     
@@ -50,25 +48,14 @@ class Points: ARMetalDrawable , PaintGestureDelagate {
             return dist(p.position) > dist(q.position)
         }
         
-        func fadeVertex(p:PointVertex) -> PointVertex {
-            var c = p.color
-            c.w *= 0.999
-            return PointVertex(position: p.position, color: c, size: p.size, hardness: p.hardness)
-        }
+        let sortedVertices = vertices.sorted(by: furthestFromCamera)
         
-        vertices = vertices.map (fadeVertex )
-            .filter{ $0.color.w > 0.05 }
-        
-        vertices.sort(by: furthestFromCamera)
-        
-        //print(vertices.count)
-        vertexBuffer?.contents().copyMemory(from: vertices, byteCount: vertices.byteLength)
+        vertexBuffer?.contents().copyMemory(from: sortedVertices, byteCount: vertices.byteLength)
     }
     
     var pipelineState: MTLRenderPipelineState?
    
     var vertexBuffer: MTLBuffer?
-    // var indexBuffer: MTLBuffer?
     
     private func buildBuffers(device: MTLDevice) {
         
@@ -77,7 +64,6 @@ class Points: ARMetalDrawable , PaintGestureDelagate {
                                          length: vertices.byteLength,
                                          options: [])
         }
-
     }
     
     var renderDestination:RenderDestinationProvider
@@ -88,12 +74,10 @@ class Points: ARMetalDrawable , PaintGestureDelagate {
     init( device:MTLDevice, destination:RenderDestinationProvider ) {
         self.renderDestination = destination
         self.device = device
-        loadMetal(device:device)// loadAssets(device:device)
+        loadMetal(device:device)
     }
     
     func loadMetal(device:MTLDevice) {
-        
-        //let anchorUniformBufferSize = kAlignedInstanceUniformsSize * kMaxBuffersInFlight
        
         buildBuffers(device: device)
         
@@ -101,10 +85,6 @@ class Points: ARMetalDrawable , PaintGestureDelagate {
         let vertexFunction = defaultLibrary.makeFunction(name: "pointVertex")!
         let fragmentFunction = defaultLibrary.makeFunction(name: "pointFragment")!
         
-        // Create a vertex descriptor for our Metal pipeline. Specifies the layout of vertices the
-        //   pipeline should expect. The layout below keeps attributes used to calculate vertex shader
-        //   output position separate (world position, skinning, tweening weights) separate from other
-        //   attributes (texture coordinates, normals).  This generally maximizes pipeline efficiency
         vertexDescriptor = MTLVertexDescriptor()
         
         //position
@@ -133,7 +113,6 @@ class Points: ARMetalDrawable , PaintGestureDelagate {
         let pipelineDescriptor = MTLRenderPipelineDescriptor()
         pipelineDescriptor.vertexFunction = vertexFunction
         pipelineDescriptor.fragmentFunction = fragmentFunction
-       // pipelineDescriptor.colorAttachments[0].pixelFormat = .bgra8Unorm
         
         pipelineDescriptor.label = "MyPointsPipeline"
         pipelineDescriptor.sampleCount = renderDestination.sampleCount
@@ -184,9 +163,7 @@ class Points: ARMetalDrawable , PaintGestureDelagate {
         // Push a debug group allowing us to identify render commands in the GPU Frame Capture tool
         renderEncoder.pushDebugGroup("DrawPionts")
         
-        //renderEncoder.setCullMode(.front)
         renderEncoder.setRenderPipelineState(pipelineState)
-        //renderEncoder.setDepthStencilState(depthState)
         
         renderEncoder.setVertexBuffer(vertexBuffer,
                                       offset: 0, index: Int(kBufferIndexMeshPositions.rawValue))

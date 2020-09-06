@@ -51,15 +51,8 @@ class Renderer {
     var commandQueue: MTLCommandQueue!
     var sharedUniformBuffer: MTLBuffer!
     
-    
-    
-    // Metal vertex descriptor specifying how vertices will by laid out for input into our
-    //   anchor geometry render pipeline and how we'll layout our Model IO verticies
-    
-
-    
     // Used to determine _uniformBufferStride each frame.
-    //   This is the current frame number modulo kMaxBuffersInFlight
+    // This is the current frame number modulo kMaxBuffersInFlight
     var uniformBufferIndex: Int = 0
     
     // Offset within _sharedUniformBuffer to set for the current frame

@@ -12,8 +12,8 @@ import DCColor
 
 class PaintModel {
     var color:BehaviorSubject<Color> = BehaviorSubject(value: RGBColor(red:1.0))
-    var hardness:BehaviorSubject<Float> = BehaviorSubject(value:0.357)
-    var scatter:BehaviorSubject<Float> = BehaviorSubject(value:0.5)
+    var hardness:BehaviorSubject<Float> = BehaviorSubject(value:0.2)
+    var scatter:BehaviorSubject<Float> = BehaviorSubject(value:0.2)
     var size:BehaviorSubject<Float> = BehaviorSubject(value:0.01)
     var noise:BehaviorSubject<Bool> = BehaviorSubject(value:false)
 }

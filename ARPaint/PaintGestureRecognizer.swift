@@ -10,17 +10,13 @@ import UIKit
 import ARKit
 import RxCocoa
 
-protocol PaintGestureDelagate {
-    func add(point:SIMD3<Float>, color:SIMD4<Float>, size:Float, hardness:Float)
-}
-
 class PaintGestureRecognizer: UIGestureRecognizer {
     let orientaion = UIInterfaceOrientation.portrait
    
     let drawPoints:BehaviorRelay<[SIMD3<Float>]> = BehaviorRelay(value: [])
     let session:ARSession
     
-    var drawDepth:Float = 0.1
+    var drawDepth:Float = 0.05
     var pointSpacing:Float = 0.005
     
     init(session:ARSession) {
