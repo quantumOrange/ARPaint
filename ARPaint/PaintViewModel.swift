@@ -68,16 +68,3 @@ func paintViewModel(
 func toggle(_ value:Bool,_ void:()) -> Bool {
     return !value
 }
-
-
-func randomVector() -> SIMD3<Float> {
-    let r = Float.random(in: 0...1)
-    let theta = Float.random(in: 0...2*Float.pi)
-    let phi = Float.random(in: 0...2*Float.pi)
-    
-    return SIMD3<Float>(
-                            r*sin(theta)*cos(phi),
-                             r*sin(theta)*sin(phi),
-                              r*cos(theta)
-                        )
-}
